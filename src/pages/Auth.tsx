@@ -27,12 +27,8 @@ const Auth = () => {
 
         try {
             if (isSignUp) {
-                const { error } = await supabase.auth.signUp({
-                    email,
-                    password,
-                });
-                if (error) throw error;
-                toast.success("Account creato! Controlla la tua email per confermare.");
+                toast.error("Non sei autorizzato, prova scrivi su linkedin a mattioli simone");
+                return;
             } else {
                 const { error } = await supabase.auth.signInWithPassword({
                     email,
