@@ -29,7 +29,15 @@ const Stats = () => {
             </div>
 
             {/* Overview Cards */}
-            <StatsOverview globalStats={stats.globalStats} bestHabit={bestHabit || undefined} />
+            <StatsOverview
+                globalStats={{
+                    totalActiveDays: stats.totalActiveDays,
+                    globalSuccessRate: stats.globalSuccessRate,
+                    bestStreak: stats.bestStreak,
+                    worstDay: stats.worstDay,
+                }}
+                bestHabit={bestHabit || undefined}
+            />
 
             {/* Heatmap - Full Width */}
             <div className="glass-panel rounded-3xl p-6">

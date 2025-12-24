@@ -35,3 +35,10 @@ Un algoritmo analizza lo storico degli ultimi 90 giorni per identificare pattern
 
 - La pagina dedicata "Mappa" è stata rimossa.
 - La visualizzazione a mappa di calore (Heatmap) è disponibile all'interno della pagina **Statistiche**.
+
+## Bug Fixes
+
+### Statistics Page Crash
+Risolto un errore critico che causava il crash dell'applicazione all'apertura della pagina Statistiche.
+- **Problema**: Il componente `StatsOverview` tentava di accedere a `globalSuccessRate` su un oggetto non definito. Questo era causato da una discrepanza tra la struttura dati "piatta" restituita dall'hook `useHabitStats` e l'oggetto annidato `globalStats` che il componente si aspettava.
+- **Soluzione**: Aggiornato `src/pages/Stats.tsx` per costruire correttamente l'oggetto `globalStats` utilizzando le proprietà (`totalActiveDays`, `globalSuccessRate`, `bestStreak`, `worstDay`) prima di passarle al componente.
