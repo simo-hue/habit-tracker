@@ -323,6 +323,36 @@ export function useHabitStats(goals: Goal[], logs: GoalLogsMap) {
         // Let's create a dedicated helper for critical stats to keep main body clean.
         const criticalHabits = calculateCriticalStats(goals, logs, today);
 
+        // 5. Calculate Comparisons
+        // Week
+        const currentWeekStart = startOfWeek(today, { locale: it, weekStartsOn: 1 });
+        const currentWeekEnd = today;
+        const prevWeekStart = subWeeks(currentWeekStart, 1);
+        const prevWeekEnd = subDays(currentWeekStart, 1);
+
+        // Month
+        const currentMonthStart = startOfMonth(today);
+        const currentMonthEnd = today;
+        const prevMonthStart = subMonths(currentMonthStart, 1);
+        const prevMonthEnd = subDays(currentMonthStart, 1);
+
+        // Year
+        const currentYearStart = startOfYear(today);
+        const currentYearEnd = today;
+        const prevYearStart = subYears(currentYearStart, 1);
+        const prevYearEnd = subDays(currentYearStart, 1);
+
+        const weekStats = calculatePeriodStats(goals, logs, currentWeekStart, currentWeekEnd, prevWeekStart, prevWeekEnd, 'week');
+        const monthStats = calculatePeriodStats(goals, logs, currentMonthStart, currentMonthEnd, prevMonthStart, prevMonthEnd, 'month');
+        const yearStats = calculatePeriodStats(goals, logs, currentYearStart, currentYearEnd, prevYearStart, prevYearEnd, 'year');
+
+        const comparisons: HabitComparison[] = goals.map(g => ({
+            habitId: g.id,
+            week: weekStats[g.id],
+            month: monthStats[g.id],
+            year: yearStats[g.id]
+        }));
+
         const statsResult = {
             habitStats,
             heatmapData,
