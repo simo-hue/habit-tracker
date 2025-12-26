@@ -1,98 +1,139 @@
-# 🎯 Habit Tracker
+<div align="center">
 
-> A modern, gamified, and insightful personal growth application to track habits, visualize progress, and build consistency.
+# 🌟 Ultimate Life OS & Habit Tracker
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![React](https://img.shields.io/badge/React-18-blue)
-![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
-![Vite](https://img.shields.io/badge/Vite-5-purple)
-![Supabase](https://img.shields.io/badge/Supabase-Backend-green)
+### **Master Your Discipline. Own Your Data. Gamify Your Growth.**
 
-## ✨ Features
+[![Watch the Tutorial](https://img.shields.io/badge/▶_Watch_Tutorial-YouTube-red?style=for-the-badge&logo=youtube)](YOUR_YOUTUBE_VIDEO_LINK_HERE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+[![Stack](https://img.shields.io/badge/Tech-React%20|%20Supabase%20|%20Tailwind-blue?style=for-the-badge)](./docs/TECHNICAL_DEEP_DIVE.md)
+[![Status](https://img.shields.io/badge/Status-Active_Development-success?style=for-the-badge)]()
 
-- **📊 Comprehensive Tracking**: Track daily habits with flexible schedules (e.g., specific days of the week).
-- **📈 Advanced Analytics**:
-  - **Heatmaps**: Yearly view of your consistency (GitHub-style).
-  - **Trends**: Weekly and monthly success rates.
-  - **Stats**: Visualization of best streaks and overall completion.
-- **🗺️ Map View**: Visualize your journey (if applicable).
-- **🏆 Gamification**: Earn badges and rewards for consistency and milestones.
-- **🌗 Dark/Light Mode**: Fully responsive design with theme support.
-- **🔒 Secure**: Authentication powered by Supabase.
+<br />
 
-## 🛠 Tech Stack
+![App Dashboard Preview](./docs/assets/dashboard_preview.png)
 
-- **Frontend**: [React](https://reactjs.org/) + [Vite](https://vitejs.dev/)
-- **Language**: [TypeScript](https://www.typescriptlang.org/)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **UI Components**: [shadcn/ui](https://ui.shadcn.com/) (Radix Primitives)
-- **State Management**: [TanStack Query](https://tanstack.com/query/latest)
-- **Backend & Auth**: [Supabase](https://supabase.com/)
-- **Icons**: [Lucide React](https://lucide.dev/)
-- **Charts**: [Recharts](https://recharts.org/)
+<p align="center">
+  <i>"We don't rise to the level of our goals. We fall to the level of our systems." — James Clear</i>
+</p>
 
-## 🚀 Getting Started
+[🏁 Quick Start](#-quick-start) • [✨ Features](#-key-features) • [📚 Documentation](#-documentation-hub) • [🧠 Philosophy](#--philosophy)
 
-### Prerequisites
+</div>
 
-Ensure you have the following installed:
-- **Node.js** (v18 or higher)
-- **npm** (v9 or higher)
+---
 
-### Installation
+## ⚡️ Quick Start
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/yourusername/habit-tracker.git
-   cd habit-tracker
-   ```
-
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
-
-3. **Environment Setup**
-   Create a `.env` file in the root directory based on the example (or required keys):
-   ```env
-   VITE_SUPABASE_URL=your_supabase_project_url
-   VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
-   ```
-
-4. **Run Development Server**
-   ```bash
-   npm run dev
-   ```
-   The app will be available at `http://localhost:8080` (or similar).
-
-## 📂 Project Structure
+Get up and running in **seconds**.
 
 ```bash
-src/
-├── components/         # Reusable UI components
-│   └── ui/             # shadcn/ui primitives
-├── hooks/              # Custom React hooks (e.g., usage of React Query)
-├── integrations/       # Supabase client and external service config
-├── pages/              # Main route components (Index, Stats, Auth, etc.)
-├── types/              # TypeScript interfaces and types
-├── App.tsx             # Application entry point with Routing
-└── main.tsx            # React DOM mounting
+# 1. Clone the repo
+git clone https://github.com/YOUR_USER/habit-tracker.git
+
+# 2. Enter the directory
+cd habit-tracker
+
+# 3. Install dependencies
+npm install
+
+# 4. Start the dev server
+npm run dev
 ```
 
-## 🧠 Development Notes (AI & Contributors)
+> **Note**: For full backend functionality, see the [Technical Setup Guide](./docs/TUTORIAL_TECH_EN.md).
 
-If you are an AI assistant or a new contributor, please refer to [AI_CONTEXT.md](./AI_CONTEXT.md) for a deep dive into the architecture, data models, and specific business logic rules (like "Soft Deletion").
+---
+
+## 💎 Key Features
+
+Why choose **Ultimate Life OS** over Notion, Todoist, or expensive SaaS apps?
+
+| Feature | 🌟 Ultimate Life OS | 📝 Notion/Generic | 💰 Paid SaaS |
+| :--- | :---: | :---: | :---: |
+| **Data Ownership** | ✅ **100% Yours** (Local/Supabase) | ❌ Cloud Only | ❌ Vendor Locked |
+| **Cost** | ✅ **Free Forever** | ⚠️ Monthly Sub | ❌ $$$ / Month |
+| **Gamification** | ✅ **XP, Levels, Missions** | ❌ Manual Setup | ⚠️ Limited |
+| **Finance Tracking** | ✅ **FIRE & Crypto Native** | ❌ Templates Needed | ⚠️ Separate App |
+| **Privacy Mode** | ✅ **One-Click Blur** | ❌ No | ❌ No |
+| **Offline First** | ✅ **Localhost Capable** | ⚠️ Limited | ❌ No |
+
+### 🔥 Core Modules
+
+<details>
+<summary><b>📊 Advanced Analytics & Heatmaps</b> (Click to Expand)</summary>
+<br />
+Don't just check boxes. See your life in data. 
+<ul>
+  <li><b>Yearly Heatmap</b>: GitHub-style contribution graph for your habits.</li>
+  <li><b>Hex Maps</b>: Beautiful visualization availability.</li>
+  <li><b>Trend Lines</b>: Spot inconsistencies before they become failures.</li>
+</ul>
+<img src="./docs/assets/analytics_view.png" alt="Analytics" width="100%">
+</details>
+
+<details>
+<summary><b>🎮 Gamification Loop</b> (Click to Expand)</summary>
+<br />
+<ul>
+  <li><b>XP System</b>: Every habit earns you XP.</li>
+  <li><b>Level Up</b>: Unlock new "Regions" (graphical themes) as you progress.</li>
+  <li><b>Missions</b>: Weekly challenges to push your limits.</li>
+</ul>
+</details>
+
+<details>
+<summary><b>💰 Financial Independence (FIRE)</b> (Click to Expand)</summary>
+<br />
+<ul>
+  <li><b>Net Worth Tracker</b>: Manual or semi-automated tracking.</li>
+  <li><b>FIRE Calculator</b>: Know your "Freedom Date".</li>
+  <li><b>Crypto Portfolio</b>: Integrated real-time tracking.</li>
+</ul>
+</details>
+
+---
+
+## 📚 Documentation Hub
+
+We have crafted distinct paths for every type of user.
+
+| 🇮🇹 Italian Docs | 🇺🇸 English Docs |
+| :--- | :--- |
+| **[Manuale Utente](./docs/TUTORIAL_USER_IT.md)** <br> *Per chi vuole solo usare l'app.* | **[User Manual](./docs/TUTORIAL_USER_EN.md)** <br> *For those who just want to use the app.* |
+| **[Guida Tecnica](./docs/TUTORIAL_TECH_IT.md)** <br> *Setup locale e deploy.* | **[Technical Guide](./docs/TUTORIAL_TECH_EN.md)** <br> *Local setup and deployment.* |
+
+### 🧠 For Engineers
+Check out the **[Technical Deep Dive](./docs/TECHNICAL_DEEP_DIVE.md)** for:
+*   Architecture Diagrams (Mermaid.js)
+*   State Management Philosophy (React Query)
+*   Supabase Security Rules (RLS) explanations.
+
+---
+
+## 🧘 Philosophy
+
+This tool is **Opinionated**. It assumes:
+1.  **Friction is the enemy**. Tracking must be instant.
+2.  **Privacy is non-negotiable**. Your finances and habits are your business.
+3.  **Aesthetics matter**. If an app looks bad, you won't use it.
+
+---
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+We love contributions! Please read our [CONTRIBUTING.md](./docs/CONTRIBUTING.md) first.
 
-1. Fork the project
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+1.  Fork it (`https://github.com/yourname/habit-tracker/fork`)
+2.  Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3.  Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4.  Push to the branch (`git push origin feature/AmazingFeature`)
+5.  Open a Pull Request
 
-## 📄 License
+---
 
-Distributed under the MIT License. See `LICENSE` for more information.
+<div align="center">
+  <br />
+  Made with ❤️, ☕, and <b>React</b>.
+  <br />
+</div>
