@@ -15,7 +15,7 @@ interface MacroGoalsStatsProps {
     year: number | string;
 }
 
-type GoalType = 'annual' | 'monthly' | 'weekly' | 'stats';
+type GoalType = 'annual' | 'quarterly' | 'monthly' | 'weekly' | 'stats';
 
 interface LongTermGoal {
     id: string;
@@ -23,6 +23,7 @@ interface LongTermGoal {
     is_completed: boolean;
     type: GoalType;
     year: number;
+    quarter: number | null;
     month: number | null;
     week_number: number | null;
     created_at: string;
@@ -92,6 +93,7 @@ export function MacroGoalsStats({ year }: MacroGoalsStatsProps) {
 
     const byType = {
         annual: allGoals.filter(g => g.type === 'annual').length,
+        quarterly: allGoals.filter(g => g.type === 'quarterly').length,
         monthly: allGoals.filter(g => g.type === 'monthly').length,
         weekly: allGoals.filter(g => g.type === 'weekly').length,
     };
@@ -99,6 +101,7 @@ export function MacroGoalsStats({ year }: MacroGoalsStatsProps) {
     // Calculate best type for generic use
     const typeStats = [
         { type: 'Annuale', total: byType.annual, completed: allGoals.filter(g => g.type === 'annual' && g.is_completed).length },
+        { type: 'Trimestrale', total: byType.quarterly, completed: allGoals.filter(g => g.type === 'quarterly' && g.is_completed).length },
         { type: 'Mensile', total: byType.monthly, completed: allGoals.filter(g => g.type === 'monthly' && g.is_completed).length },
         { type: 'Settimanale', total: byType.weekly, completed: allGoals.filter(g => g.type === 'weekly' && g.is_completed).length },
     ].map(t => ({
@@ -345,7 +348,28 @@ export function MacroGoalsStats({ year }: MacroGoalsStatsProps) {
         d.cumulativeCompleted = runningCompleted;
     });
 
-    // 2. Insights
+    // 2. Quarterly Data Preparation
+    const quarterlyData = [1, 2, 3, 4].map(q => ({
+        name: `Q${q}`,
+        quarterIndex: q,
+        total: 0,
+        completed: 0,
+        rate: 0
+    }));
+
+    allGoals.filter(g => g.quarter).forEach(g => {
+        if (g.quarter && g.quarter >= 1 && g.quarter <= 4) {
+            const idx = g.quarter - 1;
+            quarterlyData[idx].total++;
+            if (g.is_completed) quarterlyData[idx].completed++;
+        }
+    });
+
+    quarterlyData.forEach(d => {
+        d.rate = d.total > 0 ? Math.round((d.completed / d.total) * 100) : 0;
+    });
+
+    // 3. Insights
     const bestMonth = [...monthlyData]
         .filter(m => m.total > 0)
         .sort((a, b) => b.rate - a.rate || b.completed - a.completed)[0];
@@ -510,8 +534,32 @@ export function MacroGoalsStats({ year }: MacroGoalsStatsProps) {
                 </Card>
             </div>
 
-            {/* Charts Row 2: Monthly Activity & Distribution */}
+            {/* Charts Row 2: Monthly & Quarterly Activity */}
             <div className="grid gap-4 md:grid-cols-2">
+                {/* Quarterly Activity Breakdown */}
+                <Card className="bg-card/40 border-white/5 backdrop-blur-sm">
+                    <CardHeader>
+                        <CardTitle>Attività Trimestrale</CardTitle>
+                        <CardDescription>Progressione Q1 - Q4</CardDescription>
+                    </CardHeader>
+                    <CardContent className="h-[300px]">
+                        <ResponsiveContainer width="100%" height="100%">
+                            <BarChart data={quarterlyData}>
+                                <XAxis dataKey="name" stroke="#888888" fontSize={12} tickLine={false} axisLine={false} />
+                                <YAxis stroke="#888888" fontSize={12} tickLine={false} axisLine={false} />
+                                <Tooltip
+                                    contentStyle={{ backgroundColor: '#1f1f1f', border: '1px solid #333', color: '#fff', borderRadius: '8px' }}
+                                    itemStyle={{ color: '#fff' }}
+                                    cursor={{ fill: '#ffffff05' }}
+                                />
+                                <CartesianGrid stroke="#ffffff10" vertical={false} />
+                                <Bar dataKey="total" name="Pianificati" fill="#f59e0b" radius={[4, 4, 0, 0]} barSize={30} fillOpacity={0.7} />
+                                <Bar dataKey="completed" name="Completati" fill="#10b981" radius={[4, 4, 0, 0]} barSize={30} />
+                            </BarChart>
+                        </ResponsiveContainer>
+                    </CardContent>
+                </Card>
+
                 {/* Monthly Activity Breakdown */}
                 <Card className="bg-card/40 border-white/5 backdrop-blur-sm">
                     <CardHeader>
@@ -535,7 +583,7 @@ export function MacroGoalsStats({ year }: MacroGoalsStatsProps) {
                 </Card>
 
                 {/* Color Distribution Pie */}
-                <Card className="bg-card/40 border-white/5 backdrop-blur-sm">
+                <Card className="md:col-span-2 bg-card/40 border-white/5 backdrop-blur-sm">
                     <CardHeader>
                         <CardTitle>Distribuzione Categorie</CardTitle>
                     </CardHeader>

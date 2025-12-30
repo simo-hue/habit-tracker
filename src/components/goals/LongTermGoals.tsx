@@ -21,6 +21,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
     AlertDialog,
     AlertDialogAction,
@@ -403,204 +404,159 @@ export function LongTermGoals() {
                 </AlertDialogContent>
             </AlertDialog>
 
-            {/* Header / Nav */}
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+            {/* New UI Header */}
+            <div className="space-y-6">
+                {/* 1. View Mode Switcher */}
+                <div className="flex justify-center w-full">
+                    <Tabs value={view} onValueChange={(v) => setView(v as GoalType)} className="w-full max-w-2xl">
+                        <TabsList className="grid w-full grid-cols-5 p-1 bg-secondary/30 backdrop-blur-sm border border-white/5">
+                            <TabsTrigger value="annual">Annuale</TabsTrigger>
+                            <TabsTrigger value="quarterly">Trimestrale</TabsTrigger>
+                            <TabsTrigger value="monthly">Mensile</TabsTrigger>
+                            <TabsTrigger value="weekly">Settimanale</TabsTrigger>
+                            <TabsTrigger value="stats" className="gap-2"><PieChart className="w-4 h-4" /> Stats</TabsTrigger>
+                        </TabsList>
+                    </Tabs>
+                </div>
 
-                <div className="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0">
-                    <Select value={selectedYear} onValueChange={(val) => setSelectedYear(val)}>
-                        <SelectTrigger className="w-[120px]">
-                            <SelectValue placeholder="Anno" />
-                        </SelectTrigger>
-                        <SelectContent>
-                            <SelectItem value="all" className="font-bold text-primary">
-                                Dal {startYear}
-                            </SelectItem>
-                            {years.map(year => (
-                                <SelectItem
-                                    key={year}
-                                    value={year.toString()}
-                                    className={cn(year < currentYear && "text-muted-foreground italic")}
-                                >
-                                    {year}
-                                </SelectItem>
-                            ))}
-                        </SelectContent>
-                    </Select>
+                {/* 2. Contextual Toolbar */}
+                <div className="flex flex-col md:flex-row justify-between items-center gap-4 p-4 rounded-2xl bg-card/40 border border-white/5 backdrop-blur-xl transition-all duration-300">
 
-                    {view === 'quarterly' && (
-                        <Select value={selectedQuarter.toString()} onValueChange={(val) => setSelectedQuarter(parseInt(val))}>
-                            <SelectTrigger className="w-[160px]">
-                                <SelectValue placeholder="Trimestre" />
+                    {/* Left: Filters - Only show what's needed */}
+                    <div className="flex items-center gap-2 overflow-x-auto w-full md:w-auto scrollbar-hide">
+                        <Select value={selectedYear} onValueChange={(val) => setSelectedYear(val)}>
+                            <SelectTrigger className="w-[120px] bg-background/40 border-white/5">
+                                <SelectValue placeholder="Anno" />
                             </SelectTrigger>
                             <SelectContent>
-                                {quarters.map(q => (
-                                    <SelectItem
-                                        key={q.value}
-                                        value={q.value.toString()}
-                                    >
-                                        {q.label}
+                                <SelectItem value="all" className="font-bold text-primary">Dal {startYear}</SelectItem>
+                                {years.map(year => (
+                                    <SelectItem key={year} value={year.toString()} className={cn(year < currentYear && "text-muted-foreground italic")}>
+                                        {year}
                                     </SelectItem>
                                 ))}
                             </SelectContent>
                         </Select>
-                    )}
 
-                    {(view === 'monthly' || view === 'weekly') && (
-                        <Select value={selectedMonth.toString()} onValueChange={(val) => {
-                            setSelectedMonth(parseInt(val));
-                            setSelectedWeek(1); // Reset week when month changes
-                        }}>
-                            <SelectTrigger className="w-[130px]">
-                                <SelectValue placeholder="Mese" />
-                            </SelectTrigger>
-                            <SelectContent>
-                                {months.map(m => (
-                                    <SelectItem
-                                        key={m.value}
-                                        value={m.value.toString()}
-                                        className={cn(
+                        {view === 'quarterly' && (
+                            <Select value={selectedQuarter.toString()} onValueChange={(val) => setSelectedQuarter(parseInt(val))}>
+                                <SelectTrigger className="w-[160px] bg-background/40 border-white/5">
+                                    <SelectValue placeholder="Trimestre" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    {quarters.map(q => (
+                                        <SelectItem key={q.value} value={q.value.toString()}>{q.label}</SelectItem>
+                                    ))}
+                                </SelectContent>
+                            </Select>
+                        )}
+
+                        {(view === 'monthly' || view === 'weekly') && (
+                            <Select value={selectedMonth.toString()} onValueChange={(val) => {
+                                setSelectedMonth(parseInt(val));
+                                setSelectedWeek(1);
+                            }}>
+                                <SelectTrigger className="w-[140px] bg-background/40 border-white/5">
+                                    <SelectValue placeholder="Mese" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    {months.map(m => (
+                                        <SelectItem key={m.value} value={m.value.toString()} className={cn(
                                             (selectedYear !== 'all' && parseInt(selectedYear) < currentYear) || (selectedYear === currentYear.toString() && m.value < (new Date().getMonth() + 1)) && "text-muted-foreground italic"
-                                        )}
-                                    >
-                                        {m.label}
-                                    </SelectItem>
-                                ))}
-                            </SelectContent>
-                        </Select>
-                    )}
+                                        )}>
+                                            {m.label}
+                                        </SelectItem>
+                                    ))}
+                                </SelectContent>
+                            </Select>
+                        )}
 
-                    {view === 'weekly' && (
-                        <Select value={selectedWeek.toString()} onValueChange={(val) => setSelectedWeek(parseInt(val))}>
-                            <SelectTrigger className="w-[120px]">
-                                <SelectValue placeholder="Settimana" />
-                            </SelectTrigger>
-                            <SelectContent>
-                                {Array.from({ length: getWeeksInMonth(new Date(selectedYear === 'all' ? currentYear : parseInt(selectedYear), selectedMonth - 1, 1), { weekStartsOn: 1 }) }, (_, i) => i + 1).map(w => (
-                                    <SelectItem
-                                        key={w}
-                                        value={w.toString()}
-                                        // Logic for past weeks is complex without a full date compare, simplifying for now
-                                        className={cn(
+                        {view === 'weekly' && (
+                            <Select value={selectedWeek.toString()} onValueChange={(val) => setSelectedWeek(parseInt(val))}>
+                                <SelectTrigger className="w-[140px] bg-background/40 border-white/5">
+                                    <SelectValue placeholder="Settimana" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    {Array.from({ length: getWeeksInMonth(new Date(selectedYear === 'all' ? currentYear : parseInt(selectedYear), selectedMonth - 1, 1), { weekStartsOn: 1 }) }, (_, i) => i + 1).map(w => (
+                                        <SelectItem key={w} value={w.toString()} className={cn(
                                             (selectedYear !== 'all' && parseInt(selectedYear) < currentYear) || (selectedYear === currentYear.toString() && selectedMonth < (new Date().getMonth() + 1)) && "text-muted-foreground italic"
-                                        )}
-                                    >
-                                        Settimana {w}
-                                    </SelectItem>
-                                ))}
-                            </SelectContent>
-                        </Select>
-                    )}
+                                        )}>
+                                            Settimana {w}
+                                        </SelectItem>
+                                    ))}
+                                </SelectContent>
+                            </Select>
+                        )}
+                    </div>
+
+                    {/* Right: Actions */}
+                    <div className="flex items-center gap-2">
+                        {/* Export Button */}
+                        <AlertDialog>
+                            <AlertDialogTrigger asChild>
+                                <Button variant="ghost" size="icon" className="hover:bg-white/5" title="Esporta Backup (JSON)">
+                                    <Download className="w-4 h-4 text-muted-foreground" />
+                                </Button>
+                            </AlertDialogTrigger>
+                            <AlertDialogContent className="sm:max-w-md">
+                                <AlertDialogHeader>
+                                    <AlertDialogTitle>Backup Obiettivi</AlertDialogTitle>
+                                    <AlertDialogDescription>
+                                        Crea un backup dei tuoi obiettivi e impostazioni. I file sono in formato JSON.
+                                    </AlertDialogDescription>
+                                </AlertDialogHeader>
+
+                                <div className="py-4">
+                                    <RadioGroup value={exportScope} onValueChange={(v: 'all' | 'year') => setExportScope(v)}>
+                                        <div className="flex items-center space-x-2 border p-3 rounded-lg hover:bg-accent cursor-pointer" onClick={() => setExportScope('all')}>
+                                            <RadioGroupItem value="all" id="r1" />
+                                            <Label htmlFor="r1" className="cursor-pointer flex-1">
+                                                <div className="font-medium">Esporta Tutto</div>
+                                                <div className="text-xs text-muted-foreground">Tutti gli anni, mesi e impostazioni</div>
+                                            </Label>
+                                        </div>
+                                        <div className="flex items-center space-x-2 border p-3 rounded-lg hover:bg-accent cursor-pointer" onClick={() => setExportScope('year')}>
+                                            <RadioGroupItem value="year" id="r2" />
+                                            <Label htmlFor="r2" className="cursor-pointer flex-1">
+                                                <div className="font-medium">Solo {selectedYear === 'all' ? currentYear : selectedYear}</div>
+                                                <div className="text-xs text-muted-foreground">Solo obiettivi di questo anno e impostazioni</div>
+                                            </Label>
+                                        </div>
+                                    </RadioGroup>
+                                </div>
+
+                                <AlertDialogFooter>
+                                    <AlertDialogCancel>Annulla</AlertDialogCancel>
+                                    <AlertDialogAction onClick={() => exportBackup({ scope: exportScope, year: selectedYear === 'all' ? currentYear : parseInt(selectedYear) })} disabled={isExporting}>
+                                        {isExporting ? <Loader2 className="w-4 h-4 animate-spin mr-2" /> : null}
+                                        Scarica Backup
+                                    </AlertDialogAction>
+                                </AlertDialogFooter>
+                            </AlertDialogContent>
+                        </AlertDialog>
+
+                        {/* Import Button */}
+                        <Button variant="ghost" size="icon" className="hover:bg-white/5" title="Ripristina da Backup (JSON)" onClick={handleImportClick} disabled={isImporting}>
+                            {isImporting ? <Loader2 className="w-4 h-4 animate-spin" /> : <Upload className="w-4 h-4 text-muted-foreground" />}
+                        </Button>
+                        <input
+                            type="file"
+                            ref={fileInputRef}
+                            onChange={handleFileUpload}
+                            accept=".json"
+                            className="hidden"
+                        />
+
+                        {/* Settings Button */}
+                        <div className="ml-1">
+                            <GoalCategorySettingsDialog />
+                        </div>
+                    </div>
                 </div>
 
-                <div className="flex bg-secondary/50 p-1 rounded-lg gap-1 overflow-x-auto w-full md:w-auto">
-                    <Button
-                        variant={view === 'annual' ? "default" : "outline"}
-                        onClick={() => setView('annual')}
-                        className="whitespace-nowrap"
-                    >
-                        Annuale
-                    </Button>
-                    <Button
-                        variant={view === 'quarterly' ? "default" : "outline"}
-                        onClick={() => setView('quarterly')}
-                        className="whitespace-nowrap"
-                    >
-                        Trimestrale
-                    </Button>
-                    <Button
-                        variant={view === 'monthly' ? "default" : "outline"}
-                        onClick={() => setView('monthly')}
-                        className="whitespace-nowrap"
-                    >
-                        Mensile
-                    </Button>
-                    <Button
-                        variant={view === 'weekly' ? "default" : "outline"}
-                        onClick={() => setView('weekly')}
-                        className="whitespace-nowrap"
-                    >
-                        Settimanale
-                    </Button>
-                    <Button
-                        variant={view === 'stats' ? "default" : "outline"}
-                        onClick={() => setView('stats')}
-                        className="whitespace-nowrap gap-2"
-                    >
-                        <PieChart className="w-4 h-4" />
-                        Statistiche
-                    </Button>
-                </div>
-
-                <div className="flex gap-2 flex-wrap sm:flex-nowrap">
-                    {/* Export Button */}
-                    <AlertDialog>
-                        <AlertDialogTrigger asChild>
-                            <Button variant="outline" size="icon" title="Esporta Backup (JSON)">
-                                <Download className="w-4 h-4" />
-                            </Button>
-                        </AlertDialogTrigger>
-                        <AlertDialogContent className="sm:max-w-md">
-                            <AlertDialogHeader>
-                                <AlertDialogTitle>Backup Obiettivi</AlertDialogTitle>
-                                <AlertDialogDescription>
-                                    Crea un backup dei tuoi obiettivi e impostazioni. I file sono in formato JSON.
-                                </AlertDialogDescription>
-                            </AlertDialogHeader>
-
-                            <div className="py-4">
-                                <RadioGroup value={exportScope} onValueChange={(v: 'all' | 'year') => setExportScope(v)}>
-                                    <div className="flex items-center space-x-2 border p-3 rounded-lg hover:bg-accent cursor-pointer" onClick={() => setExportScope('all')}>
-                                        <RadioGroupItem value="all" id="r1" />
-                                        <Label htmlFor="r1" className="cursor-pointer flex-1">
-                                            <div className="font-medium">Esporta Tutto</div>
-                                            <div className="text-xs text-muted-foreground">Tutti gli anni, mesi e impostazioni</div>
-                                        </Label>
-                                    </div>
-                                    <div className="flex items-center space-x-2 border p-3 rounded-lg hover:bg-accent cursor-pointer" onClick={() => setExportScope('year')}>
-                                        <RadioGroupItem value="year" id="r2" />
-                                        <Label htmlFor="r2" className="cursor-pointer flex-1">
-                                            <div className="font-medium">Solo {selectedYear === 'all' ? currentYear : selectedYear}</div>
-                                            <div className="text-xs text-muted-foreground">Solo obiettivi di questo anno e impostazioni</div>
-                                        </Label>
-                                    </div>
-                                </RadioGroup>
-                            </div>
-
-                            <AlertDialogFooter>
-                                <AlertDialogCancel>Annulla</AlertDialogCancel>
-                                <AlertDialogAction onClick={() => exportBackup({ scope: exportScope, year: selectedYear === 'all' ? currentYear : parseInt(selectedYear) })} disabled={isExporting}>
-                                    {isExporting ? <Loader2 className="w-4 h-4 animate-spin mr-2" /> : null}
-                                    Scarica Backup
-                                </AlertDialogAction>
-                            </AlertDialogFooter>
-                        </AlertDialogContent>
-                    </AlertDialog>
-
-                    {/* Import Button */}
-                    <Button variant="outline" size="icon" title="Ripristina da Backup (JSON)" onClick={handleImportClick} disabled={isImporting}>
-                        {isImporting ? <Loader2 className="w-4 h-4 animate-spin" /> : <Upload className="w-4 h-4" />}
-                    </Button>
-                    <input
-                        type="file"
-                        ref={fileInputRef}
-                        onChange={handleFileUpload}
-                        accept=".json"
-                        className="hidden"
-                    />
-
-                    {/* Settings Button */}
-                    <GoalCategorySettingsDialog />
-                </div>
-            </div>
-
-            {/* Title */}
-            <div className={cn("text-2xl font-bold tracking-tight text-white flex items-center gap-3 transition-all duration-300", isPrivacyMode && view !== 'stats' && "blur-sm")}>
-                {view === 'stats' ? (
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
-                        Analytics {selectedYear === 'all' ? `Dal ${startYear} al ${currentYear}` : selectedYear}
-                    </span>
-                ) : (
-                    <>
+                {/* Dynamic Title Context */}
+                {view !== 'stats' && (
+                    <div className={cn("text-2xl font-bold tracking-tight text-white flex items-center gap-3 transition-all duration-300 pl-2", isPrivacyMode && "blur-sm")}>
                         {view === 'annual' && <span className="text-primary">{selectedYear === 'all' ? 'Tutti gli anni' : selectedYear}</span>}
                         {view === 'quarterly' && <span className="text-amber-500">Q{selectedQuarter} {selectedYear !== 'all' && selectedYear}</span>}
                         {view === 'monthly' && <span className="text-blue-400">{months.find(m => m.value === selectedMonth)?.label}</span>}
@@ -608,7 +564,7 @@ export function LongTermGoals() {
                         <span className="text-muted-foreground text-lg font-normal">
                             {view === 'annual' ? 'Obiettivi Annuali' : view === 'quarterly' ? 'Obiettivi Trimestrali' : view === 'monthly' ? 'Obiettivi Mensili' : 'Obiettivi Settimanali'}
                         </span>
-                    </>
+                    </div>
                 )}
             </div>
 
