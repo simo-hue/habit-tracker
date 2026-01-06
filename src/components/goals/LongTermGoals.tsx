@@ -718,7 +718,7 @@ export function LongTermGoals() {
                                             </div>
 
                                             <span className={cn(
-                                                "flex-1 font-medium transition-all cursor-pointer duration-300",
+                                                "flex-1 font-medium transition-all cursor-pointer duration-300 min-w-0 break-words",
                                                 effectiveStatus === 'completed' && "text-emerald-500/80 line-through",
                                                 effectiveStatus === 'failed' && "text-destructive/80 line-through",
                                                 effectiveStatus === 'active' && "text-foreground"
