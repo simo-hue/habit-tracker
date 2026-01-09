@@ -130,6 +130,8 @@ export function HabitCalendar({ habits, records, onToggleHabit, isPrivacyMode = 
                         "aspect-square rounded-xl flex flex-col items-center justify-start py-[clamp(4px,1vw,8px)] transition-all duration-300 relative border border-white/5 hover:border-white/20 hover:bg-white/5 group",
                         future && "opacity-30 cursor-not-allowed",
                         isToday(day) && !hasActivity && "bg-white/5 ring-1 ring-primary/50",
+                        // Visual cue for editable days (Today or Yesterday < 12h)
+                        !future && (isSameDay(date, new Date()) || (isSameDay(date, subDays(new Date(), 1)) && new Date().getHours() < 12)) && "ring-1 ring-primary/30 bg-primary/5"
                     )}
                 >
                     <span className={cn(

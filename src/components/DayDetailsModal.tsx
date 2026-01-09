@@ -41,9 +41,20 @@ export function DayDetailsModal({
         <Dialog open={isOpen} onOpenChange={onClose}>
             <DialogContent className="sm:max-w-[400px]">
                 <DialogHeader>
-                    <DialogTitle className="text-xl font-display capitalize">
-                        {format(date, 'EEEE d MMMM', { locale: it })}
-                    </DialogTitle>
+                    <div className="flex items-center justify-between pr-8">
+                        <DialogTitle className="text-xl font-display capitalize">
+                            {format(date, 'EEEE d MMMM', { locale: it })}
+                        </DialogTitle>
+                        {readonly ? (
+                            <span className="text-xs font-medium px-2 py-1 rounded-full bg-muted text-muted-foreground border border-border">
+                                Solo visualizzazione
+                            </span>
+                        ) : (
+                            <span className="text-xs font-medium px-2 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">
+                                Modifica abilitata
+                            </span>
+                        )}
+                    </div>
                     <DialogDescription className="sr-only">
                         Dettagli delle attività giornaliere
                     </DialogDescription>
