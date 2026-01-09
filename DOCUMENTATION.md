@@ -18,5 +18,6 @@
 - **UI Improvements**:
   - **Calendar**: Fixed desktop responsive height and removed ghost tabs layout issues.
   - **Export**: Added confirmation dialog for data export.
-  - **Layout**: Optimized sidebar alignment and restored natural height flow.
+  - **Layout**: Optimized sidebar alignment, restored natural flow, and tightened bottom spacing.
   - **Tabs**: Fixed visual alignment of tab triggers and selection highlight.
+  - **Weekly View**: Aligned layout behavior with monthly view, implementing dynamic vertical stretching for habit blocks.

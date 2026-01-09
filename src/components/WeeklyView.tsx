@@ -48,7 +48,7 @@ export function WeeklyView({ habits, records, onToggleHabit, isPrivacyMode = fal
     const isCurrentWeek = isSameDay(startOfWeek(today, { weekStartsOn: 1 }), weekStart);
 
     return (
-        <div className="w-full h-full p-6 animate-scale-in">
+        <div className="w-full h-full p-2 sm:p-4 animate-scale-in flex flex-col">
             <div className="flex items-center justify-between mb-6">
                 <h2 className="text-xl font-display font-bold capitalize">
                     {dateRangeTitle}
@@ -69,7 +69,7 @@ export function WeeklyView({ habits, records, onToggleHabit, isPrivacyMode = fal
                 </div>
             </div>
 
-            <div className="grid grid-cols-7 gap-2 sm:gap-4">
+            <div className="grid grid-cols-7 gap-2 sm:gap-4 flex-1 h-full overflow-hidden">
                 {weekDays.map((date) => {
                     const dateKey = format(date, 'yyyy-MM-dd');
                     const dayRecord = records[dateKey] || {};
@@ -80,13 +80,13 @@ export function WeeklyView({ habits, records, onToggleHabit, isPrivacyMode = fal
                     const isFuture = date > todayMidnight;
 
                     return (
-                        <div key={dateKey} className="flex flex-col gap-2">
+                        <div key={dateKey} className="flex flex-col gap-2 h-full overflow-hidden">
                             {/* Header */}
                             <button
                                 onClick={() => !isFuture && setSelectedDate(date)}
                                 disabled={isFuture}
                                 className={cn(
-                                    "text-center py-2 rounded-xl border border-transparent transition-all w-full",
+                                    "text-center py-2 rounded-xl border border-transparent transition-all w-full shrink-0",
                                     isToday && "bg-primary/10 border-primary/20 text-primary",
                                     !isFuture && "hover:bg-white/5 hover:border-white/10 cursor-pointer active:scale-95",
                                     isFuture && "opacity-50 cursor-default"
@@ -95,13 +95,13 @@ export function WeeklyView({ habits, records, onToggleHabit, isPrivacyMode = fal
                                 <div className="text-lg font-mono font-bold">{format(date, 'd')}</div>
                             </button>
 
-                            <div className={cn("flex flex-col gap-2 transition-all duration-300", isPrivacyMode && "blur-[2px]")}>
+                            <div className={cn("flex flex-col gap-2 transition-all duration-300 flex-1 h-full", isPrivacyMode && "blur-[2px]")}>
                                 {habits.map(habit => {
                                     const isStarted = habit.start_date <= dateKey;
                                     const isEnded = habit.end_date && habit.end_date < dateKey;
 
                                     if (!isStarted || isEnded) {
-                                        return <div key={habit.id} className="aspect-square rounded-xl invisible" />;
+                                        return <div key={habit.id} className="flex-1 rounded-xl invisible" />;
                                     }
 
                                     const status = dayRecord[habit.id];
@@ -112,7 +112,7 @@ export function WeeklyView({ habits, records, onToggleHabit, isPrivacyMode = fal
                                             disabled={isFuture}
                                             onClick={() => setSelectedDate(date)} // Open modal instead of toggling
                                             className={cn(
-                                                "aspect-square rounded-xl border border-white/5 flex items-center justify-center transition-all hover:border-white/20",
+                                                "flex-1 w-full rounded-xl border border-white/5 flex items-center justify-center transition-all hover:border-white/20 min-h-0",
                                                 isFuture && "opacity-30 cursor-not-allowed",
                                                 !isFuture && "cursor-pointer hover:bg-white/10", // Indicate clickable
                                                 status === 'done' && "opacity-100 shadow-[0_0_10px_currentColor]",

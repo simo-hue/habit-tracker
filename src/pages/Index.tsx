@@ -98,7 +98,7 @@ const Index = () => {
   const [view, setView] = useState("month");
 
   return (
-    <div className="flex-1 min-h-dvh flex flex-col pt-8 pb-12 px-4 sm:px-8 animate-fade-in relative z-10 w-full max-w-[2400px] mx-auto">
+    <div className="flex-1 min-h-dvh flex flex-col pt-8 px-4 sm:px-8 animate-fade-in relative z-10 w-full max-w-[2400px] mx-auto">
 
       {/* Background Glow */}
       <div className="fixed top-[-20%] left-[-10%] w-[50%] h-[50%] bg-primary/5 blur-[120px] rounded-full pointer-events-none -z-10" />
