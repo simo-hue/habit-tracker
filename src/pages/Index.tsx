@@ -268,7 +268,7 @@ const Index = () => {
         </div>
 
         {/* MAIN STAGE (Cols 4-12) */}
-        <div className="lg:col-span-9 flex flex-col lg:h-[calc(100dvh-5rem)] lg:overflow-hidden">
+        <div className="lg:col-span-9 flex flex-col">
 
           <Tabs defaultValue="month" value={view} onValueChange={setView} className="w-full h-full flex flex-col">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-4 lg:mb-4 shrink-0">
