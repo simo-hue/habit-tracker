@@ -41,6 +41,13 @@
 - **Dettagli Abitudini**: Ora ordinato per "Rate" (Performance globale) in ordine decrescente.
 - **Layout Redesign**: Implementata struttura a 4 tabs (Panoramica, Trend, Analisi, Abitudini) per ridurre lo scroll e migliorare la navigabilità.
 
+## 2026-01-11 - Desktop Layout Overlap Fix
+
+- **Problema**: Sulla home page desktop, il riquadro "Protocollo" veniva spostato verso il basso e sovrapposto dal riquadro "SYSTEM STATUS".
+- **Root Cause**: Il pannello Protocollo aveva le classi `lg:sticky lg:top-24` che lo rendevano "sticky" durante lo scroll, causando conflitti di posizionamento con i pannelli sottostanti.
+- **Fix Applicato**: Rimossa la proprietà sticky dal pannello Protocollo in `Index.tsx`.
+- **File Modificato**: `src/pages/Index.tsx` (riga 111)
+
 ## 2026-01-11 - Goal-Specific Stats Filter
 
 - **Goal Selector**: Aggiunto dropdown per selezionare goal specifico o "Tutti"

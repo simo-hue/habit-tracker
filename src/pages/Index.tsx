@@ -108,7 +108,7 @@ const Index = () => {
         {/* SIDEBAR / COMMAND CENTER (Cols 1-3) */}
         <div className="lg:col-span-3 space-y-2 lg:space-y-8">
           {/* Header */}
-          <div className="glass-panel p-4 lg:p-6 rounded-2xl space-y-4 lg:sticky lg:top-24 transition-all">
+          <div className="glass-panel p-4 lg:p-6 rounded-2xl space-y-4 transition-all">
             <div className="flex flex-row lg:flex-col items-center lg:items-start justify-between gap-4">
               <div>
                 <h1 className="text-2xl lg:text-3xl font-display font-bold text-foreground">Protocollo</h1>
