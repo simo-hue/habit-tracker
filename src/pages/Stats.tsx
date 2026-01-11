@@ -355,7 +355,7 @@ const Stats = () => {
             ) : (
                 // SINGLE GOAL VIEW
                 selectedGoal && singleGoalStats && (
-                    <Tabs defaultValue="overview" className="w-full">
+                    <Tabs defaultValue="overview" key={selectedGoalId} className="w-full">
                         <TabsList className="grid w-full grid-cols-4 mb-4 shrink-0">
                             <TabsTrigger value="overview" className="text-xs sm:text-sm">Overview</TabsTrigger>
                             <TabsTrigger value="calendario" className="text-xs sm:text-sm">Calendario</TabsTrigger>
