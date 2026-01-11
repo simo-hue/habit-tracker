@@ -39,9 +39,11 @@ const Index = () => {
     allGoals,
     rawLogs,
     createGoal,
+    updateGoal,
     deleteGoal,
     toggleGoal,
     isDeleting,
+    isUpdating,
     resetAllData,
     isResetting
   } = useGoals();
@@ -166,8 +168,10 @@ const Index = () => {
               <HabitSettings
                 habits={goals}
                 onAddHabit={createGoal}
+                onUpdateHabit={updateGoal}
                 onRemoveHabit={deleteGoal}
                 isDeleting={isDeleting}
+                isUpdating={isUpdating}
                 isPrivacyMode={isPrivacyMode}
               />
               <AlertDialog>

@@ -41,6 +41,21 @@
 - **Dettagli Abitudini**: Ora ordinato per "Rate" (Performance globale) in ordine decrescente.
 - **Layout Redesign**: Implementata struttura a 4 tabs (Panoramica, Trend, Analisi, Abitudini) per ridurre lo scroll e migliorare la navigabilità.
 
+## 2026-01-11 - Habit Edit Feature
+
+- **Nuova funzionalità**: Modifica nome e colore delle abitudini esistenti nel popup "Gestisci Abitudini"
+- **ColorPicker professionale**: Nuovo componente `color-picker.tsx` con:
+  - Ruota colori interattiva (react-colorful)
+  - Input hex diretto
+  - Preset colori rapidi
+- **Mutation updateGoal**: Aggiunta in `useGoals.ts` per aggiornare solo title e color (dati storici intatti)
+- **HabitSettings UI**: Modalità edit inline con icona Pencil accanto a Trash per ogni abitudine
+- **Files Modificati**: 
+  - `src/components/ui/color-picker.tsx` [NEW]
+  - `src/hooks/useGoals.ts`
+  - `src/components/HabitSettings.tsx`
+  - `src/pages/Index.tsx`
+
 ## 2026-01-11 - Desktop Layout Overlap Fix
 
 - **Problema**: Sulla home page desktop, il riquadro "Protocollo" veniva spostato verso il basso e sovrapposto dal riquadro "SYSTEM STATUS".

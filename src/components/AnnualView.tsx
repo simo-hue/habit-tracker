@@ -1,6 +1,6 @@
 
-import { useState } from 'react';
-import { format, isSameDay, subDays, getDay, getDate, eachDayOfInterval, startOfYear, endOfYear } from 'date-fns';
+import { useState, useMemo } from 'react';
+import { format, isSameDay, subDays, getDate, eachDayOfInterval, startOfMonth, endOfMonth, startOfYear } from 'date-fns';
 import { it } from 'date-fns/locale';
 import { ChevronLeft, ChevronRight, RotateCcw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -16,6 +16,8 @@ interface AnnualViewProps {
     isPrivacyMode?: boolean;
 }
 
+const MONTH_NAMES = ['GEN', 'FEB', 'MAR', 'APR', 'MAG', 'GIU', 'LUG', 'AGO', 'SET', 'OTT', 'NOV', 'DIC'];
+
 export function AnnualView({ habits, records, onToggleHabit, isPrivacyMode = false }: AnnualViewProps) {
     const [currentDate, setCurrentDate] = useState(new Date());
     const [selectedDate, setSelectedDate] = useState<Date | null>(null);
@@ -30,82 +32,78 @@ export function AnnualView({ habits, records, onToggleHabit, isPrivacyMode = fal
     const isToday = (date: Date) => isSameDay(today, date);
     const isFuture = (date: Date) => date > today;
 
-    // Generate all days for the current year
-    const daysInYear = eachDayOfInterval({
-        start: startOfYear(currentDate),
-        end: endOfYear(currentDate)
-    });
-
-    const renderDays = () => {
-        return daysInYear.map((date) => {
-            const dateKey = format(date, 'yyyy-MM-dd');
-            const dayRecord = records[dateKey] || {};
-            const future = isFuture(date);
-            const dayOfMonth = getDate(date);
-            const formattedDate = format(date, 'd MMMM yyyy', { locale: it });
-
-            // Filter habits valid for this date
-            const validHabits = habits.filter(h => {
-                const isStarted = h.start_date <= dateKey;
-                const isNotEnded = !h.end_date || h.end_date >= dateKey;
-                return isStarted && isNotEnded;
+    // Generate months array with days
+    const monthsData = useMemo(() => {
+        return Array.from({ length: 12 }, (_, monthIndex) => {
+            const monthStart = new Date(year, monthIndex, 1);
+            const days = eachDayOfInterval({
+                start: startOfMonth(monthStart),
+                end: endOfMonth(monthStart)
             });
-
-            // Calculate daily progress
-            const completedCount = validHabits.filter(h => dayRecord[h.id] === 'done').length;
-            const missedCount = validHabits.filter(h => dayRecord[h.id] === 'missed').length;
-            const markedCount = completedCount + missedCount;
-
-            const totalHabits = validHabits.length;
-            let completionPct = 0;
-            if (totalHabits > 0) {
-                completionPct = completedCount / totalHabits;
-            }
-
-            let style = {};
-            const hasActivity = markedCount > 0;
-
-            if (hasActivity && totalHabits > 0) {
-                const hue = Math.round(completionPct * 142); // 0 to 142
-                style = {
-                    backgroundColor: `hsl(${hue}, 70%, 10%, 0.6)`,
-                    borderColor: `hsl(${hue}, 80%, 40%, 0.4)`,
-                };
-            }
-
-            return (
-                <TooltipProvider key={dateKey}>
-                    <Tooltip delayDuration={0}>
-                        <TooltipTrigger asChild>
-                            <button
-                                onClick={() => !future && setSelectedDate(date)}
-                                disabled={future}
-                                style={style}
-                                className={cn(
-                                    "aspect-square w-full rounded-[2px] flex items-center justify-center transition-all duration-300 relative border border-white/5 hover:border-white/40 hover:scale-110 hover:z-10",
-                                    future && "opacity-10 cursor-not-allowed border-none bg-white/5",
-                                    !future && !hasActivity && "bg-white/5",
-                                    isToday(date) && !hasActivity && "ring-1 ring-primary/50 bg-primary/10",
-                                )}
-                            >
-                                {/* Only show day number if it's the 1st of the month, as a marker */}
-                                {dayOfMonth === 1 && (
-                                    <span className="text-[0.5rem] text-muted-foreground font-bold absolute top-0.5 left-0.5 leading-none">
-                                        {format(date, 'MMM', { locale: it }).toUpperCase()}
-                                    </span>
-                                )}
-                            </button>
-                        </TooltipTrigger>
-                        <TooltipContent className="bg-background/90 backdrop-blur border-white/10 text-xs">
-                            <p className="capitalize font-medium">{formattedDate}</p>
-                            {validHabits.length > 0 && (
-                                <p className="text-muted-foreground">{completedCount}/{validHabits.length} completate</p>
-                            )}
-                        </TooltipContent>
-                    </Tooltip>
-                </TooltipProvider>
-            );
+            return { monthIndex, days };
         });
+    }, [year]);
+
+    const renderDay = (date: Date) => {
+        const dateKey = format(date, 'yyyy-MM-dd');
+        const dayRecord = records[dateKey] || {};
+        const future = isFuture(date);
+        const formattedDate = format(date, 'd MMMM yyyy', { locale: it });
+
+        // Filter habits valid for this date
+        const validHabits = habits.filter(h => {
+            const isStarted = h.start_date <= dateKey;
+            const isNotEnded = !h.end_date || h.end_date >= dateKey;
+            return isStarted && isNotEnded;
+        });
+
+        // Calculate daily progress
+        const completedCount = validHabits.filter(h => dayRecord[h.id] === 'done').length;
+        const missedCount = validHabits.filter(h => dayRecord[h.id] === 'missed').length;
+        const markedCount = completedCount + missedCount;
+
+        const totalHabits = validHabits.length;
+        let completionPct = 0;
+        if (totalHabits > 0) {
+            completionPct = completedCount / totalHabits;
+        }
+
+        let style = {};
+        const hasActivity = markedCount > 0;
+
+        if (hasActivity && totalHabits > 0) {
+            const hue = Math.round(completionPct * 142); // 0 to 142
+            style = {
+                backgroundColor: `hsl(${hue}, 70%, 25%)`,
+                borderColor: `hsl(${hue}, 80%, 50%)`,
+            };
+        }
+
+        return (
+            <TooltipProvider key={dateKey}>
+                <Tooltip delayDuration={0}>
+                    <TooltipTrigger asChild>
+                        <button
+                            onClick={() => !future && setSelectedDate(date)}
+                            disabled={future}
+                            style={style}
+                            className={cn(
+                                "w-full h-full rounded-[2px] flex items-center justify-center transition-all duration-200 relative border border-white/5 hover:border-white/40 hover:scale-110 hover:z-10",
+                                future && "opacity-20 cursor-not-allowed border-none bg-white/5",
+                                !future && !hasActivity && "bg-white/5",
+                                isToday(date) && !hasActivity && "ring-1 ring-primary/50 bg-primary/10",
+                            )}
+                        />
+                    </TooltipTrigger>
+                    <TooltipContent className="bg-background/90 backdrop-blur border-white/10 text-xs">
+                        <p className="capitalize font-medium">{formattedDate}</p>
+                        {validHabits.length > 0 && (
+                            <p className="text-muted-foreground">{completedCount}/{validHabits.length} completate</p>
+                        )}
+                    </TooltipContent>
+                </Tooltip>
+            </TooltipProvider>
+        );
     };
 
     return (
@@ -131,18 +129,25 @@ export function AnnualView({ habits, records, onToggleHabit, isPrivacyMode = fal
                     </Button>
                 </div>
 
-                {/* Continuous Grid */}
-                {/* 
-                  365 days. 
-                  On desktop: maybe ~30 columns? 365/30 = 12 rows. 
-                  On mobile: maybe ~10 columns? 365/10 = 36 rows.
-                  CSS Grid auto-fill/fit is best.
-                  Let's try a responsive grid with min-width for cells.
-                */}
-                <div className="flex-1 overflow-y-auto min-h-0 custom-scrollbar pr-2">
-                    <div className="grid grid-cols-[repeat(auto-fill,minmax(20px,1fr))] gap-1 p-1">
-                        {renderDays()}
-                    </div>
+                {/* Grid Container - Full Height */}
+                <div className="flex-1 min-h-0 grid grid-cols-2 gap-x-6 gap-y-2">
+                    {monthsData.map(({ monthIndex, days }) => (
+                        <div key={monthIndex} className="flex items-center gap-2 min-h-0">
+                            {/* Month Label */}
+                            <span className="text-[10px] font-bold text-muted-foreground w-8 shrink-0">
+                                {MONTH_NAMES[monthIndex]}
+                            </span>
+                            {/* Days Grid - 31 columns, each day fills space */}
+                            <div
+                                className="flex-1 h-full grid gap-[2px]"
+                                style={{
+                                    gridTemplateColumns: `repeat(${days.length}, 1fr)`,
+                                }}
+                            >
+                                {days.map(day => renderDay(day))}
+                            </div>
+                        </div>
+                    ))}
                 </div>
             </div>
 

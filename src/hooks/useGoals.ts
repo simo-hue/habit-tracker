@@ -99,6 +99,31 @@ export function useGoals() {
         }
     });
 
+    // UPDATE GOAL (title and color only - preserves all historical data)
+    const updateGoalMutation = useMutation({
+        mutationFn: async ({ id, title, color }: { id: string; title: string; color: string }) => {
+            const { data: { session } } = await supabase.auth.getSession();
+            if (!session) {
+                throw new Error('Non sei autenticato. Effettua il login.');
+            }
+
+            const { error } = await (supabase
+                .from('goals') as any)
+                .update({ title, color })
+                .eq('id', id)
+                .eq('user_id', session.user.id);
+
+            if (error) throw error;
+        },
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ['goals'] });
+            toast.success('Abitudine aggiornata');
+        },
+        onError: (e: any) => {
+            toast.error('Errore aggiornamento: ' + e.message);
+        }
+    });
+
     const softDelete = async (goalId: string) => {
         const yesterday = new Date();
         yesterday.setDate(yesterday.getDate() - 1);
@@ -276,6 +301,8 @@ export function useGoals() {
         rawLogs: logs || [],
         isLoading: isLoadingGoals || isLoadingLogs,
         createGoal: createGoalMutation.mutate,
+        updateGoal: updateGoalMutation.mutate,
+        isUpdating: updateGoalMutation.isPending,
         deleteGoal: deleteGoalMutation.mutate,
         isDeleting: deleteGoalMutation.isPending,
         resetAllData: resetAllDataMutation.mutate,
