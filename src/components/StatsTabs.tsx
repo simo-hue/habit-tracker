@@ -18,11 +18,11 @@ export function StatsTabs({ records, monthlyGoal, onGoalChange }: StatsTabsProps
   const stats = useReadingStats(records);
   const currentYear = new Date().getFullYear();
   const [selectedYear, setSelectedYear] = useState(currentYear);
-  
-  const availableYears = stats.yearlyStats.length > 0 
+
+  const availableYears = stats.yearlyStats.length > 0
     ? stats.yearlyStats.map(y => y.year)
     : [currentYear];
-  
+
   const selectedYearStats = stats.yearlyStats.find(y => y.year === selectedYear);
 
   return (
@@ -31,7 +31,7 @@ export function StatsTabs({ records, monthlyGoal, onGoalChange }: StatsTabsProps
         <TabsList className="grid w-full grid-cols-3 mb-6">
           <TabsTrigger value="overview" className="flex items-center gap-2">
             <PieChart className="w-4 h-4" />
-            <span className="hidden sm:inline">Panoramica</span>
+            <span className="hidden sm:inline">Info</span>
           </TabsTrigger>
           <TabsTrigger value="heatmap" className="flex items-center gap-2">
             <Grid3X3 className="w-4 h-4" />
@@ -44,7 +44,7 @@ export function StatsTabs({ records, monthlyGoal, onGoalChange }: StatsTabsProps
         </TabsList>
 
         <TabsContent value="overview" className="mt-0">
-          <AdvancedDashboard 
+          <AdvancedDashboard
             overall={stats.overall}
             currentYearStats={stats.currentYearStats}
             currentMonthStats={stats.currentMonthStats}
@@ -59,8 +59,8 @@ export function StatsTabs({ records, monthlyGoal, onGoalChange }: StatsTabsProps
             <h2 className="text-xl font-display font-semibold text-foreground">
               Mappa attività
             </h2>
-            <Select 
-              value={selectedYear.toString()} 
+            <Select
+              value={selectedYear.toString()}
               onValueChange={(v) => setSelectedYear(parseInt(v))}
             >
               <SelectTrigger className="w-32">
@@ -75,9 +75,9 @@ export function StatsTabs({ records, monthlyGoal, onGoalChange }: StatsTabsProps
               </SelectContent>
             </Select>
           </div>
-          
+
           <YearlyHeatmap records={records} year={selectedYear} />
-          
+
           {selectedYearStats && (
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
               <div className="bg-card rounded-lg p-4 border border-border text-center">
@@ -105,8 +105,8 @@ export function StatsTabs({ records, monthlyGoal, onGoalChange }: StatsTabsProps
             <h2 className="text-xl font-display font-semibold text-foreground">
               Analisi mensile
             </h2>
-            <Select 
-              value={selectedYear.toString()} 
+            <Select
+              value={selectedYear.toString()}
               onValueChange={(v) => setSelectedYear(parseInt(v))}
             >
               <SelectTrigger className="w-32">
@@ -121,7 +121,7 @@ export function StatsTabs({ records, monthlyGoal, onGoalChange }: StatsTabsProps
               </SelectContent>
             </Select>
           </div>
-          
+
           {selectedYearStats ? (
             <MonthlyChart yearStats={selectedYearStats} />
           ) : (

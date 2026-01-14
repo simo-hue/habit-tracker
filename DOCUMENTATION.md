@@ -120,3 +120,18 @@ Nessuna nuova dependency richiesta. Utilizza:
 - Minimo 5 giorni di dati mood/energia per abitudine per mostrare statistiche
 - La correlazione diventa più accurata con più dati nel tempo
 - Possibilità di estendere con ML per predizioni future basate su mood/energia
+
+## Update: 14 Gennaio 2026 (Pomeriggio)
+
+### Rinomina Tab Mood & Energia
+- Rinominato il tab "Mood & Energia" (e "M&E") in "Mood" in tutte le visualizzazioni (Desktop/Mobile)
+- Modifica applicata sia alla vista globale che alla vista singola abitudine per maggiore coerenza e brevità
+- Mantenuta l'icona esistente nella vista singola abitudine
+
+### Rinomina Tab Panoramica
+- Rinominato il tab "Panoramica" in "Info" per brevità e immediatezza
+- Modifica applicata ai componenti StatsTabs e Stats page
+
+### Rinomina Tab Analisi
+- Rinominato il tab "Analisi" in "Alert" nella vista globale
+- Questo nome riflette meglio il contenuto dedicato ai focus critici e alle abitudini a rischio

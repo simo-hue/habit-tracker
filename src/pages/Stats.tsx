@@ -237,13 +237,12 @@ const Stats = () => {
                 // GLOBAL VIEW - All Goals
                 <Tabs defaultValue="panoramica" className="w-full">
                     <TabsList className="grid w-full grid-cols-5 mb-4 shrink-0">
-                        <TabsTrigger value="panoramica" className="text-xs sm:text-sm">Panoramica</TabsTrigger>
+                        <TabsTrigger value="panoramica" className="text-xs sm:text-sm">Info</TabsTrigger>
                         <TabsTrigger value="trend" className="text-xs sm:text-sm">Trend</TabsTrigger>
-                        <TabsTrigger value="analisi" className="text-xs sm:text-sm">Analisi</TabsTrigger>
+                        <TabsTrigger value="analisi" className="text-xs sm:text-sm">Alert</TabsTrigger>
                         <TabsTrigger value="abitudini" className="text-xs sm:text-sm">Abitudini</TabsTrigger>
                         <TabsTrigger value="mood-energia" className="text-xs sm:text-sm flex items-center gap-1">
-                            <span className="hidden sm:inline">Mood</span>
-                            <span className="sm:hidden">M&E</span>
+                            <span>Mood</span>
                         </TabsTrigger>
                     </TabsList>
 
@@ -383,8 +382,7 @@ const Stats = () => {
                             <TabsTrigger value="miglioramento" className="text-xs sm:text-sm">Miglioramento</TabsTrigger>
                             <TabsTrigger value="mood-energia" className="text-xs sm:text-sm flex items-center gap-1">
                                 <Sparkles className="w-3 h-3" />
-                                <span className="hidden sm:inline">Mood & Energia</span>
-                                <span className="sm:hidden">M&E</span>
+                                <span>Mood</span>
                             </TabsTrigger>
                         </TabsList>
 
