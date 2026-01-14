@@ -23,14 +23,13 @@ export function HabitRadar({ stats }: HabitRadarProps) {
     }
 
     return (
-        <div className="bg-card/50 backdrop-blur-sm rounded-3xl p-6 border border-white/5 shadow-xl h-[300px]">
-            <h3 className="text-lg font-display font-semibold mb-2">Focus Balance</h3>
-            <ResponsiveContainer width="100%" height="85%">
+        <div className="w-full h-full min-h-0">
+            <ResponsiveContainer width="100%" height="100%">
                 <RadarChart cx="50%" cy="50%" outerRadius="70%" data={data}>
                     <PolarGrid stroke="hsl(var(--border))" />
                     <PolarAngleAxis
                         dataKey="subject"
-                        tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 12 }}
+                        tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 10 }}
                     />
                     <Radar
                         name="Completion"
