@@ -38,17 +38,20 @@ export const HabitMoodCorrelationChart = ({ correlation }: HabitMoodCorrelationC
 
     const rangeData = [
         {
-            range: "Basso\n(1-4)",
+            range: "Basso",
+            rangeFull: "Basso (1-4)",
             mood: Math.round(correlation.completionRateByMood.low),
             energy: Math.round(correlation.completionRateByEnergy.low),
         },
         {
-            range: "Medio\n(5-7)",
+            range: "Medio",
+            rangeFull: "Medio (5-7)",
             mood: Math.round(correlation.completionRateByMood.medium),
             energy: Math.round(correlation.completionRateByEnergy.medium),
         },
         {
-            range: "Alto\n(8-10)",
+            range: "Alto",
+            rangeFull: "Alto (8-10)",
             mood: Math.round(correlation.completionRateByMood.high),
             energy: Math.round(correlation.completionRateByEnergy.high),
         },
@@ -201,14 +204,17 @@ export const HabitMoodCorrelationChart = ({ correlation }: HabitMoodCorrelationC
             <Card className="glass-panel shadow-lg hover:shadow-xl transition-shadow duration-300">
                 <CardHeader>
                     <CardTitle className="text-base sm:text-lg">Performance per Livello</CardTitle>
+                    <p className="text-xs text-muted-foreground mt-1">
+                        Basso (1-4) • Medio (5-7) • Alto (8-10)
+                    </p>
                 </CardHeader>
-                <CardContent className="h-[300px]">
+                <CardContent className="h-[320px]">
                     <ResponsiveContainer width="100%" height="100%">
-                        <ComposedChart data={rangeData}>
+                        <ComposedChart data={rangeData} margin={{ top: 10, right: 20, bottom: 20, left: 0 }}>
                             <CartesianGrid strokeDasharray="3 3" opacity={0.2} vertical={false} />
                             <XAxis
                                 dataKey="range"
-                                tick={{ fontSize: 11, fill: isDark ? "#A0A0A0" : "#666" }}
+                                tick={{ fontSize: 12, fill: isDark ? "#A0A0A0" : "#666" }}
                                 axisLine={false}
                                 tickLine={false}
                             />
@@ -226,7 +232,13 @@ export const HabitMoodCorrelationChart = ({ correlation }: HabitMoodCorrelationC
                                     border: "none",
                                     boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1)",
                                 }}
-                                formatter={(value: number) => [`${value}%`, ""]}
+                                formatter={(value: number, name: string, props: any) => {
+                                    return [`${value}%`, name === "mood" ? "Con Mood" : "Con Energia"];
+                                }}
+                                labelFormatter={(label: string) => {
+                                    const item = rangeData.find(d => d.range === label);
+                                    return item ? item.rangeFull : label;
+                                }}
                             />
                             <Legend wrapperStyle={{ paddingTop: "10px" }} />
                             <Line

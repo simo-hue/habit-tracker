@@ -617,3 +617,31 @@ Ora l'utente può visualizzare immediatamente nel box "Confronto Performance":
 ### File Modificato
 - `/src/components/stats/WorstStreakAnalysis.tsx` - Linee 65, 87-88, 336-340
 
+---
+
+## Modifica Default Switch AI: OFF
+**Data**: 16 Gennaio 2026 - Ore 18:02  
+**File modificato**: `src/context/AIContext.tsx`
+
+### Descrizione
+Modificato lo stato di default dello switch AI da **ON** a **OFF**. Ora quando l'utente avvia l'applicazione per la prima volta, la funzionalità AI Coach sarà disabilitata di default, e dovrà essere attivata manualmente tramite lo switch presente nella sezione "Protocollo" della pagina Index.
+
+### Modifica Implementata
+
+#### File: `AIContext.tsx` (linea 12)
+- **Prima**: `const [isAIEnabled, setIsAIEnabled] = useState(true); // Default: AI abilitata`
+- **Dopo**: `const [isAIEnabled, setIsAIEnabled] = useState(false); // Default: AI disabilitata`
+
+### Comportamento
+Con questa modifica:
+- ✅ Lo switch AI nella sezione "Protocollo" sarà in posizione **OFF** di default
+- ✅ L'AI Coach page non sarà accessibile fino all'attivazione manuale
+- ✅ Il card "AI Coach" nella tab Stats sarà nascosto fino all'attivazione
+- ✅ Il link di navigazione all'AI Coach sarà nascosto nel menu laterale
+
+### Motivazione
+Questa modifica migliora l'esperienza utente iniziale permettendo all'utente di esplorare l'applicazione senza la funzionalità AI e decidere consapevolmente quando attivarla, rispettando anche le preferenze privacy-first dell'applicazione.
+
+### File Coinvolti
+- `/Users/simo/Downloads/DEV/habit-tracker/src/context/AIContext.tsx` - Stato iniziale modificato
+

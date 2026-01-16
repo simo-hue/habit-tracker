@@ -535,10 +535,22 @@ const Stats = () => {
                 selectedGoal && singleGoalStats && (
                     <Tabs defaultValue="overview" key={selectedGoalId} className="w-full">
                         <TabsList className="grid w-full grid-cols-5 mb-4 shrink-0">
-                            <TabsTrigger value="overview" className="text-xs sm:text-sm">Overview</TabsTrigger>
-                            <TabsTrigger value="calendario" className="text-xs sm:text-sm">Calendario</TabsTrigger>
-                            <TabsTrigger value="performance" className="text-xs sm:text-sm">Performance</TabsTrigger>
-                            <TabsTrigger value="miglioramento" className="text-xs sm:text-sm">Miglioramento</TabsTrigger>
+                            <TabsTrigger value="overview" className="text-xs sm:text-sm">
+                                <span className="hidden sm:inline">Overview</span>
+                                <span className="sm:hidden">Info</span>
+                            </TabsTrigger>
+                            <TabsTrigger value="calendario" className="text-xs sm:text-sm">
+                                <span className="hidden sm:inline">Calendario</span>
+                                <span className="sm:hidden">Cal</span>
+                            </TabsTrigger>
+                            <TabsTrigger value="performance" className="text-xs sm:text-sm">
+                                <span className="hidden sm:inline">Performance</span>
+                                <span className="sm:hidden">Perf</span>
+                            </TabsTrigger>
+                            <TabsTrigger value="miglioramento" className="text-xs sm:text-sm">
+                                <span className="hidden sm:inline">Miglioramento</span>
+                                <span className="sm:hidden">Tips</span>
+                            </TabsTrigger>
                             <TabsTrigger value="mood-energia" className="text-xs sm:text-sm flex items-center gap-1">
                                 <Sparkles className="w-3 h-3" />
                                 <span>Mood</span>

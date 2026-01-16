@@ -9,7 +9,7 @@ interface AIContextType {
 const AIContext = createContext<AIContextType | undefined>(undefined);
 
 export const AIProvider = ({ children }: { children: ReactNode }) => {
-    const [isAIEnabled, setIsAIEnabled] = useState(true); // Default: AI abilitata
+    const [isAIEnabled, setIsAIEnabled] = useState(false); // Default: AI disabilitata
 
     const toggleAI = () => {
         setIsAIEnabled((prev) => !prev);
