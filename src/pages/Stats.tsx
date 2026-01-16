@@ -1,6 +1,7 @@
 import { useGoals } from '@/hooks/useGoals';
 import { useHabitStats, Timeframe } from '@/hooks/useHabitStats';
 import { useHabitMoodCorrelation } from '@/hooks/useHabitMoodCorrelation';
+import { useHabitCorrelation } from '@/hooks/useHabitCorrelation';
 import { StatsOverview } from '@/components/stats/StatsOverview';
 import { ActivityHeatmap } from '@/components/stats/ActivityHeatmap';
 import { TrendChart } from '@/components/stats/TrendChart';
@@ -13,6 +14,10 @@ import { HabitMoodCorrelationChart } from '@/components/stats/HabitMoodCorrelati
 import { MoodEnergyHabitMatrix } from '@/components/stats/MoodEnergyHabitMatrix';
 import { MoodEnergyInsights } from '@/components/stats/MoodEnergyInsights';
 import { WorstStreakAnalysis } from '@/components/stats/WorstStreakAnalysis';
+import { KeystoneHabitsPanel } from '@/components/stats/KeystoneHabitsPanel';
+import { CorrelationSummary } from '@/components/stats/CorrelationSummary';
+import { CorrelationPairCard } from '@/components/stats/CorrelationPairCard';
+import { SingleHabitCorrelations } from '@/components/stats/SingleHabitCorrelations';
 import { Trophy, TrendingDown, AlertTriangle, Calendar, Target, MoveLeft, AlignLeft, Sparkles, Flame, TrendingUp } from 'lucide-react';
 import { usePrivacy } from '@/context/PrivacyContext';
 import { useAI } from '@/context/AIContext';
@@ -32,6 +37,7 @@ const Stats = () => {
     const { isPrivacyMode } = usePrivacy();
     const { isAIEnabled } = useAI();
     const { correlations, insights } = useHabitMoodCorrelation(goals, logs);
+    const { correlations: habitCorrelations, insights: habitCorrelationInsights } = useHabitCorrelation(goals, logs);
 
     // Find selected goal
     const selectedGoal = useMemo(() => {
@@ -311,6 +317,56 @@ const Stats = () => {
                             </div>
                         )}
 
+                        {/* Habit Correlation Insights */}
+                        {habitCorrelationInsights.totalPairs > 0 && (
+                            <>
+                                {/* Keystone Habits */}
+                                {habitCorrelationInsights.keystoneHabits.length > 0 && (
+                                    <div className={cn("transition-all duration-300", isPrivacyMode && "blur-sm")}>
+                                        <KeystoneHabitsPanel keystoneHabits={habitCorrelationInsights.keystoneHabits} />
+                                    </div>
+                                )}
+
+                                {/* Correlation Summary */}
+                                <div className={cn("transition-all duration-300", isPrivacyMode && "blur-sm")}>
+                                    <CorrelationSummary insights={habitCorrelationInsights} />
+                                </div>
+
+                                {/* Top Positive Correlations */}
+                                {habitCorrelationInsights.strongestPositive.length > 0 && (
+                                    <div className={cn("transition-all duration-300", isPrivacyMode && "blur-sm")}>
+                                        <div className="space-y-3">
+                                            <h3 className="text-base sm:text-lg font-display font-semibold flex items-center gap-2">
+                                                <span className="text-green-500">💚</span>
+                                                Correlazioni Positive
+                                            </h3>
+                                            {habitCorrelationInsights.strongestPositive.map((pair, i) => (
+                                                <CorrelationPairCard key={i} correlation={pair} />
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
+
+                                {/* Negative Correlations (if any) */}
+                                {habitCorrelationInsights.strongestNegative.length > 0 && (
+                                    <div className={cn("transition-all duration-300", isPrivacyMode && "blur-sm")}>
+                                        <div className="space-y-3">
+                                            <h3 className="text-base sm:text-lg font-display font-semibold flex items-center gap-2">
+                                                <span className="text-red-500">⚠️</span>
+                                                Correlazioni Negative
+                                            </h3>
+                                            <p className="text-sm text-muted-foreground mb-3">
+                                                Queste abitudini tendono a non essere completate insieme.
+                                            </p>
+                                            {habitCorrelationInsights.strongestNegative.map((pair, i) => (
+                                                <CorrelationPairCard key={i} correlation={pair} />
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
+                            </>
+                        )}
+
                         <div className="glass-panel rounded-3xl p-4 sm:p-6">
                             <h3 className="text-base sm:text-lg font-display font-semibold mb-4 flex items-center gap-2">
                                 <span className="w-2 h-2 rounded-sm bg-primary animate-pulse" />
@@ -541,6 +597,16 @@ const Stats = () => {
                                         <span>Non completato</span>
                                     </div>
                                 </div>
+                            </div>
+
+                            {/* Single Habit Correlations */}
+                            <div className={cn("transition-all duration-300", isPrivacyMode && "blur-sm")}>
+                                <SingleHabitCorrelations
+                                    habitId={selectedGoal.id}
+                                    habitTitle={selectedGoal.title}
+                                    habitColor={selectedGoal.color}
+                                    allCorrelations={habitCorrelations}
+                                />
                             </div>
                         </TabsContent>
 

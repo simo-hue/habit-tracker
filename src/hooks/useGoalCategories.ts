@@ -112,20 +112,33 @@ export function useGoalCategories() {
 
     // Returns ONLY ACTIVE labels for selection dropdowns
     const activeCategoryLabels = useMemo(() => {
-        const mappingLabels: Record<string, string> = {};
+        const allLabels: Record<string, string> = {};
+
+        // First, add all default categories
+        Object.entries(DEFAULT_CATEGORY_LABELS).forEach(([key, label]) => {
+            allLabels[key] = label;
+        });
+
+        // Then process mappings: override defaults or add custom categories
         if (settings?.mappings) {
             Object.entries(settings.mappings).forEach(([key, val]) => {
                 const isArchived = typeof val !== 'string' && val.archived;
-                if (!isArchived) {
+
+                if (isArchived) {
+                    // Remove from active labels if archived (even if it was a default)
+                    delete allLabels[key];
+                } else {
+                    // Add or override with custom label
                     if (typeof val === 'string') {
-                        mappingLabels[key] = val;
+                        allLabels[key] = val;
                     } else {
-                        mappingLabels[key] = val.label;
+                        allLabels[key] = val.label;
                     }
                 }
             });
         }
-        return { ...DEFAULT_CATEGORY_LABELS, ...mappingLabels };
+
+        return allLabels;
     }, [settings]);
 
 
