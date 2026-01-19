@@ -1601,3 +1601,110 @@ Vedere \`TO_SIMO_DO.md\` per i test manuali dettagliati che includono:
 - **Compatibilità**: Retrocompatibile al 100%
 
 ---
+
+---
+
+## Landing Page & Routing Restructure
+**Date**: 19 Gennaio 2026
+
+### Overview
+Strutturato il sito web pubblico per "Mattioli.OS" mantenendo nascosta la web app privata.
+
+### Changes
+1. **New Landing Page**: Created `src/pages/LandingPage.tsx` with a premium, dark-mode design showcasing the tool's philosophy and features (Habits, Goals, AI Coach) without exposing the app entry point.
+2. **Routing Update**:
+   - `/`: Now points to the public Landing Page.
+   - `/dashboard`: New protected route for the main application view (previously `/`).
+   - `/auth`: Redirects to `/dashboard` upon successful login.
+3. **Internal Links**: Updated `Layout.tsx`, `MobileNav.tsx` to ensure internal navigation points to `/dashboard` instead of root.
+
+### Security/Privacy
+The web application is now effectively "hidden" from the public landing page. Users must know the specific `/dashboard` route (or be redirected after auth) to access the tool. No direct links exist on the homepage.
+
+### Update: Open Source Branding
+**Date**: 19 Gennaio 2026
+
+Added visual cues and text to emphasize the Open Source and Free nature of the project on the Landing Page:
+- Added a "Open Source & Free Forever" badge in the Hero section.
+- Updated the main description to explicitly state "Open Source".
+- Updated the Footer to read "Open Source Project" instead of just "All Systems Operational".
+
+### Update: FAQ Page
+**Date**: 19 Gennaio 2026
+
+Added a comprehensive FAQ page () with 40+ questions distributed across 6 categories:
+1.  **Philosophy & General**: Project vision and Open Source status.
+2.  **Daily Protocol**: Habits usage, tri-state logic, and streaks.
+3.  **Macro Goals & Vision**: Long-term hierarchy and Memento Mori.
+4.  **AI Coach & Privacy**: Local LLM and privacy details.
+5.  **Tech & Data**: Stack, data storage, and backup.
+6.  **Troubleshooting**: Common issues.
+
+Integrated links to the FAQ page in the Landing Page navigation and footer.
+
+### Update: FAQ Page
+**Date**: 19 Gennaio 2026
+
+Added a comprehensive FAQ page (/faq) with 40+ questions across 6 categories.
+Integrated links in Landing Page.
+
+### Update: Tech Page
+**Date**: 19 Gennaio 2026
+
+Added a dedicated Tech Page (`/tech`) to showcase the technical architecture.
+- **Hero Section**: Highlighting "Future-Proof Tech Stack".
+- **Zero-Cost Deployment**: Explaining GitHub Pages + Supabase Free Tier model.
+- **Mobile First**: Emphasizing PWA capabilities (no download needed).
+- **Tech Stack**: Grid of technologies (React, Vite, Supabase, Tailwind, etc.).
+- **Connectivity**: Real-time sync explanation.
+
+### Update: Philosophy Page
+**Date**: 19 Gennaio 2026
+
+Added a "Philosophy" page (`/philosophy`) detailing the "Founder's Story" and the core principles of the software.
+- **Origin Story**: Focuses on the "Built out of Necessity" narrative (couldn't find a free, complete tool, so built one).
+- **Three Pillars**:
+    1.  **Micro & Macro Alignment**: Connecting daily habits to long-term vision.
+    2.  **Data-Driven Growth**: Using metrics and correlations, not just checklists.
+    3.  **Extreme Ownership**: Open Source commitment for privacy and data ownership.
+
+### Update: Philosophy Page Content
+**Date**: 19 Gennaio 2026
+
+Updated the "Origin Story" in `/philosophy` to specifically mention the evolution from:
+1.  **Apple Reminders**: Simple but limited start.
+2.  **Notion**: Complex systems studies, but lacking flow and oversight.
+3.  **Mattioli.OS**: The unique solution built to fill the gap.
+
+### Update: Features Page
+**Date**: 19 Gennaio 2026
+
+Added a "Features" page (`/features`) that lists all key functionalities of the "Operating System".
+- **Daily Mastery**: Habits, Tri-state logic (Done/Missed/Skipped), Streaks.
+- **Long-Term Vision**: Macro Goals, Life View, Yearly Trends.
+- **Intelligence**: AI Neural Coach (Local LLM), Mood & Energy Matrix, Privacy First.
+- **Utilities**: Reading Tracker, Markdown Memos, Smart Deletion, Full Backup.
+- **Tech**: Mobile & Desktop Native focus.
+
+### Update: Get Started Page
+**Date**: 19 Gennaio 2026
+
+Added a "Get Started" guide (`/get-started`) to help non-technical users install the application.
+- **Step-by-Step Instructions**: Prerequisites (VS Code, Node, Git), Database Setup (Supabase), Code Installation, and Configuration.
+- **Copy-Paste Commands**: Integrated copy buttons for all terminal commands.
+- **Schema Access**: Embedded a scrollable view of `schema.sql` and a link to the raw file.
+
+### Update: Creator Page
+**Date**: 19 Gennaio 2026
+
+Added a "Founder" page (`/creator`) dedicating space to Simone Mattioli.
+- **Narrative**: "Dal Codice alla Cima" - blending Tech (AI, HPC) and Nature (Val di Rabbi).
+- **Design**: Split-theme visuals using Purple (Tech) and Emerald (Nature) accents.
+- **Socials**: Links to GitHub, LinkedIn, Mountain Project, and Personal Site.
+
+### Update: Deployment Section
+**Date**: 19 Gennaio 2026
+
+Added an "Extra: Online Deployment" section to the Get Started Guide.
+- **Vercel**: Instructions for importing from GitHub and setting env vars.
+- **GitHub Pages**: Instructions for setting `base` path in `vite.config.ts` and deploying the `dist` folder.

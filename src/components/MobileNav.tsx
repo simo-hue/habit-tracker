@@ -3,7 +3,7 @@ import { cn } from '@/lib/utils';
 import { PieChart, Home, BarChart2 } from 'lucide-react';
 
 const mobileNavItems = [
-    { to: '/', label: 'Home', icon: Home },
+    { to: '/dashboard', label: 'Home', icon: Home },
     { to: '/stats', label: 'Stats', icon: BarChart2 },
     { to: '/macro-goals', label: 'Obiettivi', icon: PieChart },
 ];

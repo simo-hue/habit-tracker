@@ -5,6 +5,13 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Layout } from "./components/Layout";
+import LandingPage from "./pages/LandingPage";
+import FAQPage from "./pages/FAQ";
+import TechPage from "./pages/TechPage";
+import PhilosophyPage from "./pages/PhilosophyPage";
+import FeaturesPage from "./pages/FeaturesPage";
+import GetStartedPage from "./pages/GetStartedPage";
+import CreatorPage from "./pages/CreatorPage";
 import { supabase } from "@/integrations/supabase/client";
 import Index from "./pages/Index";
 import Stats from "./pages/Stats";
@@ -58,13 +65,20 @@ const App = () => {
             <HashRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
               <Routes>
                 <Route path="/auth" element={<Auth />} />
+                <Route path="/" element={<LandingPage />} />
+                <Route path="/faq" element={<FAQPage />} />
+                <Route path="/tech" element={<TechPage />} />
+                <Route path="/philosophy" element={<PhilosophyPage />} />
+                <Route path="/features" element={<FeaturesPage />} />
+                <Route path="/get-started" element={<GetStartedPage />} />
+                <Route path="/creator" element={<CreatorPage />} />
 
                 <Route element={
                   <ProtectedRoute>
                     <Layout />
                   </ProtectedRoute>
                 }>
-                  <Route path="/" element={<Index />} />
+                  <Route path="/dashboard" element={<Index />} />
                   <Route path="/stats" element={<Stats />} />
                   <Route path="/macro-goals" element={<MacroGoals />} />
                   <Route path="/ai-coach" element={<AICoach />} />
