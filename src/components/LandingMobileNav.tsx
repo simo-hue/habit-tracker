@@ -55,6 +55,14 @@ const LandingMobileNav = () => {
                             transition={{ type: "spring", damping: 25, stiffness: 200 }}
                             className="fixed inset-0 z-[9999] bg-black/80 backdrop-blur-xl pt-24 px-6"
                         >
+                            <Button
+                                variant="ghost"
+                                size="icon"
+                                className="absolute top-4 right-6 text-white hover:bg-white/10"
+                                onClick={() => setIsOpen(false)}
+                            >
+                                <X />
+                            </Button>
                             <nav className="flex flex-col gap-6">
                                 {menuItems.map((item, idx) => (
                                     <motion.div
