@@ -8,15 +8,20 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { toast } from "sonner";
+import { useToast } from "@/components/ui/use-toast";
+import LandingMobileNav from "@/components/LandingMobileNav";
 
 const GetStartedPage = () => {
     const [copiedStep, setCopiedStep] = useState<string | null>(null);
+    const { toast } = useToast();
 
     const handleCopy = (text: string, stepId: string) => {
         navigator.clipboard.writeText(text);
         setCopiedStep(stepId);
-        toast.success("Copiato negli appunti!");
+        toast({
+            title: "Copiato negli appunti!",
+            duration: 2000,
+        });
         setTimeout(() => setCopiedStep(null), 2000);
     };
 
@@ -36,10 +41,9 @@ const GetStartedPage = () => {
                 <div className="container mx-auto px-6 h-16 flex items-center justify-between">
                     <Link to="/" className="flex items-center gap-2 text-zinc-400 hover:text-white transition-colors">
                         <ArrowLeft size={20} />
-                        <span className="text-sm font-medium">Torna alla Home</span>
+                        <span className="hidden md:inline text-sm font-medium">Torna alla Home</span>
                     </Link>
-                    <span className="font-semibold text-lg tracking-tight">Installation Guide</span>
-                    <div className="w-20"></div>
+                    <LandingMobileNav />
                 </div>
             </nav>
 
@@ -49,6 +53,7 @@ const GetStartedPage = () => {
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
+
                         className="text-4xl md:text-6xl font-bold tracking-tight mb-6"
                     >
                         Il tuo OS in 10 minuti.

@@ -7,6 +7,7 @@ import {
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import LandingMobileNav from "@/components/LandingMobileNav";
 
 // FAQ Data
 const faqData = [
@@ -108,10 +109,10 @@ const FAQPage = () => {
                 <div className="container mx-auto px-6 h-16 flex items-center justify-between">
                     <Link to="/" className="flex items-center gap-2 text-zinc-400 hover:text-white transition-colors">
                         <ArrowLeft size={20} />
-                        <span className="text-sm font-medium">Torna alla Home</span>
+                        <span className="hidden md:inline text-sm font-medium">Torna alla Home</span>
                     </Link>
                     <span className="font-semibold text-lg tracking-tight">Q&A Knowledge Base</span>
-                    <div className="w-20"></div> {/* Spacer for centering */}
+                    <LandingMobileNav />
                 </div>
             </nav>
 

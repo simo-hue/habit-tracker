@@ -797,7 +797,52 @@ npm install --save-dev @types/file-saver
 ✅ **Smart Matching**: Confronto smart per evitare duplicati usando ID e content matching  
 ✅ **TypeScript Strict**: Tipizzazione completa con any assertions per Supabase  
 ✅ **Error Handling**: Try/catch per ogni tabella, report errori dettagliati  
-✅ **Ottimizzazione Performance**: Promise.all per fetch parallelo  
+
+---
+
+## Ottimizzazione Mobile & Creator Page
+**Data**: 17 Gennaio 2026  
+
+### Descrizione
+Completata una significativa fase di ottimizzazione per dispositivi mobili e aggiunto contenuti istituzionali per rafforzare il brand e la narrativa del progetto.
+
+### Nuove Pagine Implementate
+
+#### 1. Creator Page (`/creator`)
+Una pagina dedicata che racconta la storia del fondatore Simone Mattioli, unendo le due anime del progetto: Tech e Natura.
+- **Design Split-Screen**: Gradiente viola (Tech) e smeraldo (Natura).
+- **Contenuti**: Bio, Filosofia ("Dal Codice alla Cima"), e link social.
+- **Accessibilità**: Completamente responsiva.
+
+#### 2. Get Started Guide (`/get-started`)
+Guida passo-passo per l'installazione locale del progetto.
+- **5 Step Chiari**: Prerequisiti, Database, Code, Connect, Launch.
+- **Deploy Section**: Aggiunta guida per il deploy su Vercel e GitHub Pages.
+- **UX**: Pulsanti "Copia" per comandi e snippet SQL.
+
+### Ottimizzazioni Tecniche
+
+#### Mobile Navigation System
+Implementato un sistema di navigazione unificato per mobile (`LandingMobileNav.tsx`).
+- **Componente**: `LandingMobileNav` (Hamburger Menu).
+- **Integrazione**: Aggiunto a tutte le pagine statiche (`Landing`, `Features`, `Philosophy`, `Tech`, `FAQ`, `Creator`, `GetStarted`).
+- **Logica**: Overlay a tutto schermo con animazioni Framer Motion.
+
+#### Responsive & Layout Fixes
+- **Features Page**: Grid layout adattivo (1 colonna mobile, 4 desktop).
+- **Typography**: Titoli ridimensionati per viewport piccoli (`text-4xl` su mobile).
+- **Footer**: Migliorato wrapping dei link su schermi stretti.
+- **Code Blocks**: Aggiunto horizontal scroll per snippet di codice lunghi in `GetStartedPage`.
+
+### File Modificati/Creati
+- `src/pages/CreatorPage.tsx` (Nuovo)
+- `src/pages/GetStartedPage.tsx` (Nuovo)
+- `src/components/LandingMobileNav.tsx` (Nuovo)
+- `src/pages/FeaturesPage.tsx` (Update Nav)
+- `src/pages/PhilosophyPage.tsx` (Update Nav)
+- `src/pages/TechPage.tsx` (Update Nav)
+- `src/pages/FAQ.tsx` (Update Nav)
+
 ✅ **Validazione Robusta**: Controllo versione, timestamp, presenza dati  
 ✅ **Retrocompatibilità**: Supporto JSON diretto oltre a ZIP  
 ✅ **User Experience**: Progress, loading states, detailed feedback
@@ -1708,3 +1753,26 @@ Added a "Founder" page (`/creator`) dedicating space to Simone Mattioli.
 Added an "Extra: Online Deployment" section to the Get Started Guide.
 - **Vercel**: Instructions for importing from GitHub and setting env vars.
 - **GitHub Pages**: Instructions for setting `base` path in `vite.config.ts` and deploying the `dist` folder.
+
+### 19 Gennaio 2026 - Mobile Nav Fix
+
+**Problema**: Il menu mobile risultava trasparente (`bg-black/95`), rendendo difficile la lettura a causa della sovrapposizione con il contenuto sottostante.
+**Soluzione**:
+- Modificato `LandingMobileNav.tsx`
+- Implementato effetto "Glassmorphism" con `bg-black/60` e `backdrop-blur-3xl`.
+- Risultato: menu leggibile con sfondo sfocato moderno, mantenendo contesto visivo ma separazione netta.
+
+### 19 Gennaio 2026 - Migration to BrowserRouter (GitHub Pages)
+
+**Obiettivo**: Garantire che il sito web (Landing Page) sia servito come pagina principale con URL puliti, separandolo dall'applicazione.
+
+**Modifiche**:
+- **File**: `src/App.tsx`
+- **Azione**: Sostituito `HashRouter` con `BrowserRouter`.
+- **Configurazione**: Aggiunto `basename="/habit-tracker"` per supportare la sottocartella di GitHub Pages.
+
+**Risultato**:
+- URL puliti senza hash (`/#/`).
+- `https://.../habit-tracker/` -> Landing Page
+- `https://.../habit-tracker/dashboard` -> App
+- Necessario file `404.html` (copia di index.html) per gestire il routing client-side su GitHub Pages (già gestito dal workflow di deploy).

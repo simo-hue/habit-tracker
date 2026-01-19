@@ -5,6 +5,7 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import LandingMobileNav from "@/components/LandingMobileNav";
 
 const CreatorPage = () => {
     const fadeInUp = {
@@ -23,8 +24,9 @@ const CreatorPage = () => {
                         <ArrowLeft size={20} />
                         <span className="text-sm font-medium">Torna alla Home</span>
                     </Link>
-                    <span className="font-semibold text-lg tracking-tight">The Founder</span>
-                    <div className="w-20"></div>
+                    <span className="font-semibold text-lg tracking-tight hidden md:block">The Founder</span>
+                    <div className="w-20 hidden md:block"></div>
+                    <LandingMobileNav />
                 </div>
             </nav>
 
@@ -40,10 +42,10 @@ const CreatorPage = () => {
                         animate={{ opacity: 1, scale: 1 }}
                         className="text-center mb-16"
                     >
-                        <h1 className="text-5xl md:text-8xl font-bold tracking-tighter mb-6">
+                        <h1 className="text-4xl md:text-8xl font-bold tracking-tighter mb-6">
                             Simone <span className="text-zinc-500">Mattioli</span>
                         </h1>
-                        <p className="text-xl md:text-2xl text-zinc-400 max-w-2xl mx-auto font-light">
+                        <p className="text-lg md:text-2xl text-zinc-400 max-w-2xl mx-auto font-light">
                             Dal codice alla cima. Un viaggio tra byte e natura selvaggia.
                         </p>
                     </motion.div>
@@ -135,7 +137,7 @@ const CreatorPage = () => {
                             </Button>
                         </a>
                         <a href="http://simo-hue.github.io" target="_blank" rel="noopener noreferrer">
-                            <Button variant="outline" className="h-14 px-8 rounded-full border-white/10 hover:bg-purple-600 hover:border-purple-600 hover:text-white gap-2 transition-all">
+                            <Button variant="outline" className="h-14 px-8 rounded-full border-white/10 hover:bg-purple-600 hover:border-purple-600 hover:text-white gap-2 transition-all w-full md:w-auto">
                                 <Globe size={20} />
                                 Personal Site
                             </Button>

@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle2, Target, BarChart3, Brain, Calendar, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import LandingMobileNav from "@/components/LandingMobileNav";
 
 const LandingPage = () => {
     const fadeInUp = {
@@ -38,13 +39,15 @@ const LandingPage = () => {
                         <Link to="/creator" className="hover:text-white transition-colors">Il Founder</Link>
                         <Link to="/faq" className="hover:text-white transition-colors font-medium text-purple-400">FAQ</Link>
                     </div>
-                    <div className="flex items-center gap-4">
+                    <div className="hidden md:flex items-center gap-4">
                         <Link to="/get-started">
                             <Button size="sm" className="rounded-full px-4 bg-white text-black hover:bg-zinc-200 transition-colors">
                                 Guida Installazione
                             </Button>
                         </Link>
                     </div>
+                    {/* Mobile Navigation Toggle */}
+                    <LandingMobileNav />
                 </div>
             </nav>
 
@@ -81,7 +84,7 @@ const LandingPage = () => {
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-5xl md:text-7xl font-bold tracking-tight mb-6 bg-gradient-to-b from-white via-white/90 to-white/50 bg-clip-text text-transparent"
+                        className="text-4xl md:text-7xl font-bold tracking-tight mb-6 bg-gradient-to-b from-white via-white/90 to-white/50 bg-clip-text text-transparent"
                     >
                         Il Sistema Operativo <br />
                         Per la Tua <span className="text-white">Produttività.</span>
@@ -212,14 +215,6 @@ const LandingPage = () => {
                 <div className="container mx-auto max-w-6xl flex flex-col md:flex-row justify-between items-center text-zinc-500 text-sm">
                     <div className="mb-4 md:mb-0">
                         <span className="font-semibold text-zinc-300">Mattioli.OS</span> © 2026. Open Source Project.
-                    </div>
-                    <div className="flex gap-6">
-                        <Link to="/get-started" className="hover:text-white cursor-pointer transition-colors">Guida Installazione</Link>
-                        <Link to="/creator" className="hover:text-white cursor-pointer transition-colors">Il Founder</Link>
-                        <Link to="/faq" className="hover:text-white cursor-pointer transition-colors">FAQ & Support</Link>
-                        <span className="hover:text-white cursor-pointer transition-colors">Privacy Policy</span>
-                        <span className="hover:text-white cursor-pointer transition-colors">Terms of Service</span>
-                        <span className="hover:text-white cursor-pointer transition-colors">System Status</span>
                     </div>
                 </div>
             </footer>

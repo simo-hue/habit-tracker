@@ -124,3 +124,46 @@ Controlla che i seguenti link nel README.md siano corretti:
 2. [ ] **Narrative**: Check if the "Tech vs Nature" story is effectively communicated.
 3. [ ] **External Links**: Test all 4 social buttons (GitHub, LinkedIn, Mountains, Personal).
 4. [ ] **Visuals**: Verify the background gradients (purple/emerald) render correctly.
+
+---
+
+## Mobile Optimization Verification
+1. [ ] **Hamburger Menu**: Open any subpage (e.g., Features) on mobile. Verify the hamburger menu appears.
+2. [ ] **Navigation Flow**: Click "Features" -> "Creator" -> "Tech" via the mobile menu. Verify smooth transition.
+3. [ ] **Back to Home**: Verify the "ArrowLeft" icon works on mobile (text might be hidden).
+4. [ ] **No Overflow**: Scroll horizontally on all pages. There should be NO horizontal scrollbar (except for code blocks).
+
+## Deployment Guide Verification
+1. [ ] **Vercel Section**: Read the Vercel deployment steps. Are they accurate?
+2. [ ] **GitHub Pages Section**: Read the GitHub Pages steps. Is the `base` path warning clear?
+3. [ ] **Visuals**: Verify the background gradients (purple/emerald) render correctly.
+
+---
+
+## Test Mobile Nav Transparency
+1. [ ] Aprire il sito da mobile o devtools mobile view
+2. [ ] Cliccare sull'icona menu hamburger
+3. [ ] **Verifica**:
+   - [ ] Lo sfondo del menu è "sfocato" (glass effect)
+   - [ ] Il contenuto sottostante è visibile ma fortemente sfocato
+   - [ ] Il testo è ben leggibile grazie allo sfondo scuro semitrasparente
+
+---
+
+## GitHub Pages Deployment Verification (BrowserRouter)
+1. [ ] **Push to Main**: Esegui `git push` e attendi il completamento dell'action su GitHub.
+2. [ ] **Verify Root URL**: Visita `https://simo-hue.github.io/habit-tracker/` (o il tuo URL GitHub Pages).
+   - [ ] Deve caricare la **Landing Page**.
+   - [ ] L'URL **NON** deve contenere `/#/`.
+3. [ ] **Verify Dashboard Navigation**:
+   - [ ] Clicca su "Accedi alla Dashboard" o loggati.
+   - [ ] Verifica il redirect a `/habit-tracker/dashboard`.
+4. [ ] **Direct Link Test**:
+   - [ ] Prova ad aprire direttamente `https://simo-hue.github.io/habit-tracker/features`.
+   - [ ] Verifica che carichi la pagina corretta (grazie al 404 hack).
+5. [ ] **Refresh Test**:
+   - [ ] Vai su `/dashboard` o `/tech`.
+   - [ ] Ricarica la pagina.
+   - [ ] Verifica che rimanga sulla pagina corretta senza errori 404.
+
+

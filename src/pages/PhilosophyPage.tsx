@@ -5,6 +5,7 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import LandingMobileNav from "@/components/LandingMobileNav";
 
 const PhilosophyPage = () => {
     const fadeInUp = {
@@ -29,10 +30,10 @@ const PhilosophyPage = () => {
                 <div className="container mx-auto px-6 h-16 flex items-center justify-between">
                     <Link to="/" className="flex items-center gap-2 text-zinc-400 hover:text-white transition-colors">
                         <ArrowLeft size={20} />
-                        <span className="text-sm font-medium">Torna alla Home</span>
+                        <span className="hidden md:inline text-sm font-medium">Torna alla Home</span>
                     </Link>
                     <span className="font-semibold text-lg tracking-tight">Our Philosophy</span>
-                    <div className="w-20"></div>
+                    <LandingMobileNav />
                 </div>
             </nav>
 
@@ -160,6 +161,11 @@ const PhilosophyPage = () => {
                             Esplora la Tecnologia
                         </Button>
                     </Link>
+                    <a href="https://github.com/simo-hue/habit-tracker" target="_blank" rel="noreferrer">
+                        <Button className="bg-white text-black hover:bg-zinc-200 rounded-full px-8 py-4 text-lg">
+                            Vai su GitHub
+                        </Button>
+                    </a>
                 </div>
             </footer>
         </div>
