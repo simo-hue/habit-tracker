@@ -161,7 +161,7 @@ const PhilosophyPage = () => {
                             Esplora la Tecnologia
                         </Button>
                     </Link>
-                    <a href="https://github.com/simo-hue/habit-tracker" target="_blank" rel="noreferrer">
+                    <a href="https://github.com/simo-hue/mattioli.OS" target="_blank" rel="noreferrer">
                         <Button className="bg-white text-black hover:bg-zinc-200 rounded-full px-8 py-4 text-lg">
                             Vai su GitHub
                         </Button>

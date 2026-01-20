@@ -92,7 +92,7 @@ const LandingMobileNav = () => {
                                             Guida
                                         </Button>
                                     </Link>
-                                    <a href="https://github.com/simo-hue/habit-tracker" target="_blank" rel="noreferrer">
+                                    <a href="https://github.com/simo-hue/mattioli.OS" target="_blank" rel="noreferrer">
                                         <Button className="w-full h-12 bg-white/10 border border-white/10 text-white hover:bg-white/20 rounded-xl px-8 text-sm md:text-lg">
                                             GitHub
                                         </Button>

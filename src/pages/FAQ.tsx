@@ -232,7 +232,7 @@ const FAQPage = () => {
                 <p className="text-zinc-400 mb-8">
                     Unisciti alla community o contattaci direttamente su GitHub.
                 </p>
-                <a href="https://github.com/simo-hue/habit-tracker" target="_blank" rel="noreferrer">
+                <a href="https://github.com/simo-hue/mattioli.OS" target="_blank" rel="noreferrer">
                     <Button className="bg-white text-black hover:bg-zinc-200 rounded-full px-8 py-6 text-lg">
                         Vai su GitHub
                     </Button>

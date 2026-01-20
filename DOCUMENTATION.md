@@ -1776,3 +1776,19 @@ Added an "Extra: Online Deployment" section to the Get Started Guide.
 - `https://.../habit-tracker/` -> Landing Page
 - `https://.../habit-tracker/dashboard` -> App
 - Necessario file `404.html` (copia di index.html) per gestire il routing client-side su GitHub Pages (già gestito dal workflow di deploy).
+
+
+## 20 Gennaio 2026 - Fix Deploy GitHub Pages
+
+### Descrizione
+Risolto problema di caricamento risorse (404) su GitHub Pages causato dal cambio nome repository in 'mattioli.OS'.
+
+### Modifiche Apportate
+
+#### 1. Vite Config
+**File**: `vite.config.ts`
+- Aggiornata la proprietà `base` da `/habit-tracker/` a `/mattioli.OS/` per corrispondere al nuovo percorso URL di GitHub Pages.
+
+#### 2. Istruzioni Manuali
+**File**: `TO_SIMO_DO.md`
+- Aggiunta sezione per il rebuild e redeploy manuale necessario per applicare le modifiche.

@@ -6,7 +6,7 @@ import { saveAs } from 'file-saver';
  */
 export async function createBackupZip(backupData: any, timestamp: string): Promise<void> {
     const zip = new JSZip();
-    const folderName = `habit-tracker-backup-${timestamp.split('T')[0]}`;
+    const folderName = `mattioli-os-backup-${timestamp.split('T')[0]}`;
 
     // Root folder
     const root = zip.folder(folderName);
@@ -142,7 +142,7 @@ STRUTTURA FILE
   - settings/: Impostazioni utente e app
   - notes/: Note personali
 
-Per assistenza o segnalazioni: https://github.com/simo-hue/habit-tracker/issues
+Per assistenza o segnalazioni: https://github.com/simo-hue/mattioli.OS/issues
 `;
 }
 
@@ -269,7 +269,7 @@ export function generateRestoreInstructionsIT(backupData: any): string {
 ### Prerequisiti
 - Applicazione Habit Tracker già installata e funzionante
 - Account Supabase configurato
-- File di backup ( habit-tracker-backup-*.zip)
+- File di backup ( mattioli.OS-backup-*.zip)
 
 ### Passaggi
 
@@ -299,7 +299,7 @@ export function generateRestoreInstructionsIT(backupData: any): string {
 
 ### Prerequisiti
 - Niente! Partirai da zero
-- File di backup (habit-tracker-backup-*.zip)
+- File di backup (mattioli.OS-backup-*.zip)
 - Account GitHub (opzionale, per deploy)
 
 ### FASE 1: Crea Nuovo Progetto Supabase
@@ -309,7 +309,7 @@ export function generateRestoreInstructionsIT(backupData: any): string {
 - Clicca "Start your project"
 - Crea una nuova organization (se necessario)
 - Crea un nuovo progetto:
-  - Nome: \`habit-tracker-restore\` (o quello che preferisci)
+  - Nome: \`mattioli.OS-restore\` (o quello che preferisci)
   - Database Password: **SALVALA!** Ti servirà
   - Region: Scegli la più vicina a te
 
@@ -335,8 +335,8 @@ export function generateRestoreInstructionsIT(backupData: any): string {
 
 **2.1 Clona Repository**
 \`\`\`bash
-git clone https://github.com/simo-hue/habit-tracker.git
-cd habit-tracker
+git clone https://github.com/simo-hue/mattioli.OS.git
+cd mattioli.OS
 \`\`\`
 
 **2.2 Installa Dipendenze**
@@ -357,7 +357,7 @@ Sostituisci con i valori salvati al punto 1.4
 \`\`\`bash
 npm run dev
 \`\`\`
-Apri http://localhost:8080/habit-tracker/
+Apri http://localhost:8080/mattioli.OS/
 
 ### FASE 3: Ripristina i Dati
 
@@ -391,7 +391,7 @@ npm run deploy
 - Salva
 
 La tua app sarà online su:  
-\`https://tuo-username.github.io/habit-tracker/\`
+\`https://tuo-username.github.io/mattioli.OS/\`
 
 ---
 
@@ -420,8 +420,8 @@ La tua app sarà online su:
 
 ## 📞 SUPPORTO
 
-- GitHub Issues: https://github.com/simo-hue/habit-tracker/issues
-- Documentazione: https://github.com/simo-hue/habit-tracker
+- GitHub Issues: https://github.com/simo-hue/mattioli.OS/issues
+- Documentazione: https://github.com/simo-hue/mattioli.OS
 
 ---
 
@@ -454,7 +454,7 @@ export function generateRestoreInstructionsEN(backupData: any): string {
 ### Prerequisites
 - Habit Tracker app already installed and running
 - Supabase account configured
-- Backup file (habit-tracker-backup-*.zip)
+- Backup file (mattioli.OS-backup-*.zip)
 
 ### Steps
 
@@ -484,7 +484,7 @@ export function generateRestoreInstructionsEN(backupData: any): string {
 
 ### Prerequisites
 - Nothing! You'll start from zero
-- Backup file (habit-tracker-backup-*.zip)
+- Backup file (mattioli.OS-backup-*.zip)
 - GitHub account (optional, for deployment)
 
 ### PHASE 1: Create New Supabase Project
@@ -494,7 +494,7 @@ export function generateRestoreInstructionsEN(backupData: any): string {
 - Click "Start your project"
 - Create a new organization (if needed)
 - Create a new project:
-  - Name: \`habit-tracker-restore\` (or whatever you prefer)
+  - Name: \`mattioli.OS-restore\` (or whatever you prefer)
   - Database Password: **SAVE IT!** You'll need it
   - Region: Choose closest to you
 
@@ -520,8 +520,8 @@ export function generateRestoreInstructionsEN(backupData: any): string {
 
 **2.1 Clone Repository**
 \`\`\`bash
-git clone https://github.com/simo-hue/habit-tracker.git
-cd habit-tracker
+git clone https://github.com/simo-hue/mattioli.OS.git
+cd mattioli.OS
 \`\`\`
 
 **2.2 Install Dependencies**
@@ -542,7 +542,7 @@ Replace with values saved in step 1.4
 \`\`\`bash
 npm run dev
 \`\`\`
-Open http://localhost:8080/habit-tracker/
+Open http://localhost:8080/mattioli.OS/
 
 ### PHASE 3: Restore Data
 
@@ -576,7 +576,7 @@ npm run deploy
 - Save
 
 Your app will be live at:  
-\`https://your-username.github.io/habit-tracker/\`
+\`https://your-username.github.io/mattioli.OS/\`
 
 ---
 
@@ -605,8 +605,8 @@ Your app will be live at:
 
 ## 📞 SUPPORT
 
-- GitHub Issues: https://github.com/simo-hue/habit-tracker/issues
-- Documentation: https://github.com/simo-hue/habit-tracker
+- GitHub Issues: https://github.com/simo-hue/mattioli.OS/issues
+- Documentation: https://github.com/simo-hue/mattioli.OS
 
 ---
 

@@ -32,7 +32,7 @@ const GetStartedPage = () => {
     };
 
     // Simplified Schema for display - ideally this links to the file or downloads it
-    const schemaUrl = "https://raw.githubusercontent.com/simo-hue/habit-tracker/main/schema.sql";
+    const schemaUrl = "https://raw.githubusercontent.com/simo-hue/mattioli.OS/main/schema.sql";
 
     return (
         <div className="min-h-screen bg-black text-white selection:bg-green-900 selection:text-white overflow-x-hidden">
@@ -153,12 +153,12 @@ const GetStartedPage = () => {
 
                             <div className="group relative rounded-xl bg-zinc-900 border border-white/10 p-4">
                                 <code className="block mb-2 text-sm text-purple-400 font-mono"># 1. Clona il repository</code>
-                                <code className="font-mono text-sm text-zinc-300">git clone https://github.com/simo-hue/habit-tracker.git</code>
+                                <code className="font-mono text-sm text-zinc-300">git clone https://github.com/simo-hue/mattioli.OS.git</code>
                                 <Button
                                     size="icon"
                                     variant="ghost"
                                     className="absolute right-2 top-2 opacity-0 group-hover:opacity-100 transition-opacity"
-                                    onClick={() => handleCopy("git clone https://github.com/simo-hue/habit-tracker.git", "step3-1")}
+                                    onClick={() => handleCopy("git clone https://github.com/simo-hue/mattioli.OS.git", "step3-1")}
                                 >
                                     {copiedStep === "step3-1" ? <Check size={16} className="text-green-500" /> : <Copy size={16} />}
                                 </Button>
@@ -166,7 +166,7 @@ const GetStartedPage = () => {
 
                             <div className="group relative rounded-xl bg-zinc-900 border border-white/10 p-4">
                                 <code className="block mb-2 text-sm text-purple-400 font-mono"># 2. Entra nella cartella</code>
-                                <code className="font-mono text-sm text-zinc-300">cd habit-tracker</code>
+                                <code className="font-mono text-sm text-zinc-300">cd mattioli.OS</code>
                             </div>
 
                             <div className="group relative rounded-xl bg-zinc-900 border border-white/10 p-4">
@@ -194,7 +194,7 @@ const GetStartedPage = () => {
                             <p className="text-zinc-400">Colleghiamo il codice al tuo database.</p>
                         </div>
                         <ol className="list-decimal list-inside space-y-3 text-zinc-300 ml-2">
-                            <li>Apri la cartella <code className="bg-white/10 px-1 py-0.5 rounded text-xs">habit-tracker</code> con <strong>VS Code</strong>.</li>
+                            <li>Apri la cartella <code className="bg-white/10 px-1 py-0.5 rounded text-xs">mattioli.OS</code> con <strong>VS Code</strong>.</li>
                             <li>Trova il file chiamato <code className="bg-white/10 px-1 py-0.5 rounded text-xs">.env.example</code> (potrebbe essere nascosto, usa cmd+shift+. su mac).</li>
                             <li>Rinominalo in <code className="bg-white/10 px-1 py-0.5 rounded text-xs">.env</code>.</li>
                             <li>Apri il file e incolla le chiavi che hai preso da Supabase nel passaggio 2.</li>
@@ -302,7 +302,7 @@ const GetStartedPage = () => {
                     <Link to="/faq">
                         <Button variant="secondary">Consulta le FAQ</Button>
                     </Link>
-                    <a href="https://github.com/simo-hue/habit-tracker/issues" target="_blank" rel="noopener noreferrer">
+                    <a href="https://github.com/simo-hue/mattioli.OS/issues" target="_blank" rel="noopener noreferrer">
                         <Button variant="outline">Chiedi Aiuto su GitHub</Button>
                     </a>
                 </div>

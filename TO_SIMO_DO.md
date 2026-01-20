@@ -167,3 +167,4 @@ Controlla che i seguenti link nel README.md siano corretti:
    - [ ] Verifica che rimanga sulla pagina corretta senza errori 404.
 
 
+- [ ] [Implementazione Concept Art](./DOCUMENTATION_CONCEPT_ART.md)
