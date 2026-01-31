@@ -2,6 +2,19 @@
 
 ## 📅 Log Modifiche (Ultimi aggiornamenti)
 
+### [2026-01-31] Enhanced Category Distribution PieChart (Macro Goals)
+- **Miglioramenti Estetici Premium**:
+  - Gradienti sulle fette del grafico con effetto sfumato
+  - Drop shadow per dare profondità
+  - Tooltip glassmorphism con dati formattati (obiettivi, percentuale quota)
+  - Legenda custom con percentuali e effetti hover
+  - Label centrale che mostra il totale obiettivi
+  - Header migliorato con icona e descrizione
+  - Ambient glow effect sulla card
+  - Animazioni smooth in ingresso (1.2s ease-out)
+- **File Modificato**: `src/components/goals/MacroGoalsStats.tsx`
+- **Testing**: Build verificata con successo.
+
 ### [2026-01-31] Enhanced Mood & Energy vs Productivity Chart
 - **Nuova Funzionalità**: Aggiunto selettore timeframe (7gg, 14gg, 30gg, Tutto) identico a quello del grafico Trend.
 - **Miglioramenti Estetici Premium**:

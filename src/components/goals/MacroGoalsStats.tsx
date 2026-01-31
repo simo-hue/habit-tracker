@@ -826,34 +826,104 @@ export function MacroGoalsStats({ year }: MacroGoalsStatsProps) {
                     </CardContent>
                 </Card>
 
-                {/* Color Distribution Pie */}
-                <Card className="md:col-span-2 bg-card/40 border-white/5 backdrop-blur-sm">
+                {/* Color Distribution Pie - Premium */}
+                <Card className="md:col-span-2 bg-card/40 border-white/5 backdrop-blur-sm overflow-hidden">
                     <CardHeader>
-                        <CardTitle>Distribuzione Categorie</CardTitle>
+                        <div className="flex items-center gap-2">
+                            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-500/20 to-purple-600/20 flex items-center justify-center border border-violet-500/20">
+                                <Target className="w-4 h-4 text-violet-400" />
+                            </div>
+                            <div>
+                                <CardTitle>Distribuzione Categorie</CardTitle>
+                                <CardDescription>Ripartizione degli obiettivi per area di focus</CardDescription>
+                            </div>
+                        </div>
                     </CardHeader>
-                    <CardContent className="h-[300px]">
-                        <ResponsiveContainer width="100%" height="100%">
-                            <PieChart>
-                                <Pie
-                                    data={pieData}
-                                    cx="50%"
-                                    cy="50%"
-                                    innerRadius={60}
-                                    outerRadius={80}
-                                    paddingAngle={5}
-                                    dataKey="value"
-                                >
-                                    {pieData.map((entry, index) => (
-                                        <Cell key={`cell-${index}`} fill={entry.fill} />
-                                    ))}
-                                </Pie>
-                                <Tooltip
-                                    contentStyle={{ backgroundColor: '#1f1f1f', border: '1px solid #333', color: '#fff', borderRadius: '8px' }}
-                                    itemStyle={{ color: '#fff' }}
-                                />
-                                <Legend formatter={(value, entry: any) => <span style={{ color: '#ccc' }}>{value}</span>} />
-                            </PieChart>
-                        </ResponsiveContainer>
+                    <CardContent>
+                        <div className="flex flex-col md:flex-row items-center gap-8">
+                            {/* Pie Chart - Left Side */}
+                            <div className="relative w-[220px] h-[220px] shrink-0">
+                                <ResponsiveContainer width="100%" height="100%">
+                                    <PieChart>
+                                        <Pie
+                                            data={pieData}
+                                            cx="50%"
+                                            cy="50%"
+                                            innerRadius={65}
+                                            outerRadius={95}
+                                            paddingAngle={2}
+                                            dataKey="value"
+                                            animationBegin={0}
+                                            animationDuration={1000}
+                                            animationEasing="ease-out"
+                                            stroke="rgba(0,0,0,0.3)"
+                                            strokeWidth={2}
+                                        >
+                                            {pieData.map((entry, index) => (
+                                                <Cell
+                                                    key={`cell-${index}`}
+                                                    fill={entry.fill}
+                                                />
+                                            ))}
+                                        </Pie>
+                                        <Tooltip
+                                            content={({ active, payload }) => {
+                                                if (active && payload && payload.length) {
+                                                    const data = payload[0].payload;
+                                                    const total = pieData.reduce((sum, item) => sum + item.value, 0);
+                                                    const percentage = Math.round((data.value / total) * 100);
+                                                    return (
+                                                        <div className="glass-panel rounded-xl p-3 border border-white/10 shadow-2xl backdrop-blur-xl">
+                                                            <div className="flex items-center gap-2">
+                                                                <div
+                                                                    className="w-3 h-3 rounded-full"
+                                                                    style={{ backgroundColor: data.fill }}
+                                                                />
+                                                                <span className="text-sm font-semibold text-foreground">{data.name}</span>
+                                                                <span className="text-sm font-bold ml-2" style={{ color: data.fill }}>{percentage}%</span>
+                                                            </div>
+                                                        </div>
+                                                    );
+                                                }
+                                                return null;
+                                            }}
+                                        />
+                                    </PieChart>
+                                </ResponsiveContainer>
+                                {/* Center Label */}
+                                <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+                                    <span className="text-3xl font-bold text-foreground">
+                                        {pieData.reduce((sum, item) => sum + item.value, 0)}
+                                    </span>
+                                    <span className="text-xs text-muted-foreground">obiettivi</span>
+                                </div>
+                            </div>
+
+                            {/* Legend - Right Side */}
+                            <div className="flex-1 w-full">
+                                <div className="space-y-2">
+                                    {pieData.map((item, index) => {
+                                        const total = pieData.reduce((sum, i) => sum + i.value, 0);
+                                        const percentage = total > 0 ? Math.round((item.value / total) * 100) : 0;
+                                        return (
+                                            <div
+                                                key={`legend-${index}`}
+                                                className="flex items-center justify-between px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
+                                            >
+                                                <div className="flex items-center gap-3">
+                                                    <div
+                                                        className="w-3 h-3 rounded-full shrink-0"
+                                                        style={{ backgroundColor: item.fill }}
+                                                    />
+                                                    <span className="text-sm text-foreground">{item.name}</span>
+                                                </div>
+                                                <span className="text-sm text-muted-foreground font-mono">{percentage}%</span>
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            </div>
+                        </div>
                     </CardContent>
                 </Card>
             </div>
