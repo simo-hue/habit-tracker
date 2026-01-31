@@ -2,6 +2,24 @@
 
 ## 📅 Log Modifiche (Ultimi aggiornamenti)
 
+### [2026-01-31] Enhanced Mood & Energy vs Productivity Chart
+- **Nuova Funzionalità**: Aggiunto selettore timeframe (7gg, 14gg, 30gg, Tutto) identico a quello del grafico Trend.
+- **Miglioramenti Estetici Premium**:
+  - Gradienti sofisticati per l'area di produttività (viola sfumato)
+  - Effetto glow luminoso sulle linee Mood (verde) ed Energy (arancio)
+  - Tooltip custom con design glassmorphism e icone colorate
+  - Legenda migliorata con indicatori gradiente
+  - Punti dati con animazioni hover e glow effect
+  - Linea di riferimento al 50% produttività
+  - Animazioni smooth in ingresso per i dati
+  - Ambient glow effect sulla card
+- **Componenti Custom**:
+  - `CustomTooltip`: Tooltip glassmorphism con dati formattati (/10, %)
+  - `CustomLegend`: Legenda con pallini gradiente e shadow
+- **Query Ottimizzata**: Il fetch dei dati viene ora filtrato in base al timeframe selezionato.
+- **File Modificato**: `src/components/stats/MoodCorrelationChart.tsx`
+- **Testing**: Build verificata con successo (vite build).
+
 ### [2026-01-31] Fix Visualizzazione "AI Coach" nell'Header
 - **Problema**: Il link "AI Coach" rimaneva sempre visibile nell'header della navigazione anche quando lo switch AI veniva disattivato nel box del protocollo (dashboard).
 - **Causa**: Nel componente `GlobalNav.tsx`, la logica di filtraggio controllava il percorso `/ai-coach` invece del percorso corretto `/sw/ai-coach`, causando un mancato match e rendendo il filtro inefficace.
