@@ -70,7 +70,7 @@ const TechPage = () => {
                         transition={{ delay: 0.1 }}
                         className="text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto leading-relaxed"
                     >
-                        Costruito per essere veloce, scalabile e gratuito. Nessun abbonamento, nessun vendor lock-in. Solo puro codice Open Source.
+                        Built to be fast, scalable and free. No subscriptions, no vendor lock-in. Just pure Open Source code.
                     </motion.p>
                 </div>
             </section>
@@ -93,27 +93,27 @@ const TechPage = () => {
                             </div>
                             <h3 className="text-2xl font-bold mb-4">Zero-Cost Deployment</h3>
                             <p className="text-zinc-400 mb-6 leading-relaxed">
-                                L'intera applicazione è architettata per essere ospitata gratuitamente.
-                                Non serve un server dedicato.
+                                The entire application is architected to be hosted for free.
+                                No dedicated server required.
                             </p>
                             <ul className="space-y-3 mb-8">
                                 <li className="flex items-center gap-3 text-sm text-zinc-300">
                                     <Github size={16} className="text-white" />
-                                    <span>Hostato su <strong>GitHub Pages</strong> o Vercel</span>
+                                    <span>Hosted on <strong>GitHub Pages</strong> or Vercel</span>
                                 </li>
                                 <li className="flex items-center gap-3 text-sm text-zinc-300">
                                     <Database size={16} className="text-green-400" />
-                                    <span>Backend su <strong>Supabase</strong> (Tier Free Generoso)</span>
+                                    <span>Backend on <strong>Supabase</strong> (Generous Free Tier)</span>
                                 </li>
                                 <li className="flex items-center gap-3 text-sm text-zinc-300">
                                     <Globe size={16} className="text-blue-400" />
-                                    <span>Accessibile ovunque via Browser</span>
+                                    <span>Accessible anywhere via Browser</span>
                                 </li>
                             </ul>
                             <div className="p-4 rounded-xl bg-black/40 border border-white/5">
                                 <code className="text-xs text-zinc-500 font-mono">
                                     git push origin main<br />
-                                    # Deploy automatico attivo
+                                    # Automatic deploy active
                                 </code>
                             </div>
                         </motion.div>
@@ -130,7 +130,7 @@ const TechPage = () => {
                             </div>
                             <h3 className="text-2xl font-bold mb-4">Mobile Experience, App-Free</h3>
                             <p className="text-zinc-400 mb-6 leading-relaxed">
-                                Non devi scaricare nulla dall'App Store. Mattioli.OS è una <strong>Progressive Web App (PWA)</strong>.
+                                You don't need to download anything from the App Store. Mattioli.OS is a <strong>Progressive Web App (PWA)</strong>.
                             </p>
                             <div className="grid grid-cols-2 gap-4 mb-8">
                                 <div className="p-4 rounded-2xl bg-white/5">
@@ -139,11 +139,11 @@ const TechPage = () => {
                                 </div>
                                 <div className="p-4 rounded-2xl bg-white/5">
                                     <div className="text-2xl font-bold text-white mb-1">0mb</div>
-                                    <div className="text-xs text-zinc-500"> spazio richiesto</div>
+                                    <div className="text-xs text-zinc-500">space required</div>
                                 </div>
                             </div>
                             <p className="text-sm text-zinc-500 border-l-2 border-purple-500 pl-4">
-                                "Aggiungi alla Home" su iOS e Android per avere un'esperienza identica a un'app nativa, a schermo intero e senza distrazioni.
+                                "Add to Home" on iOS and Android for an experience identical to a native app, full screen and distraction-free.
                             </p>
                         </motion.div>
                     </div>
@@ -186,7 +186,7 @@ const TechPage = () => {
                     </div>
                     <h2 className="text-4xl font-bold mb-6">Always Connected</h2>
                     <p className="text-xl text-zinc-400 mb-8 max-w-2xl mx-auto">
-                        Inizia sul portatile, continua sul telefono. Grazie a Supabase, i tuoi dati sono istantaneamente sincronizzati su tutti i tuoi dispositivi in tempo reale.
+                        Start on your laptop, continue on your phone. Thanks to Supabase, your data is instantly synchronized across all your devices in real-time.
                     </p>
                     <div className="flex justify-center gap-4">
                         <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-black/50 border border-white/10 text-zinc-400">

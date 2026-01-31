@@ -26,46 +26,46 @@ const FeaturesPage = () => {
     const featureSections = [
         {
             title: "Daily Mastery",
-            description: "Il cuore del sistema. Tracciamento chirurgico delle tue routine.",
+            description: "The heart of the system. Surgical tracking of your routines.",
             icon: Activity,
             features: [
-                { name: "Tri-State Logic", desc: "Non solo fatto/non fatto. Gestisci 'Done', 'Missed' e 'Skipped' (legittimo) per statistiche reali." },
-                { name: "Frequency Control", desc: "Imposta abitudini per giorni specifici (es. Lun, Mer, Ven) o quotidiane." },
-                { name: "Quantifiable Goals", desc: "Traccia numeri precisi: '2 litri d'acqua', '10 pagine lette', '45 minuti workout'." },
-                { name: "Streak Freeze", desc: "La modalità 'Skipped' congela la tua streak senza romperla quando sei malato o in ferie." }
+                { name: "Tri-State Logic", desc: "Not just done/not done. Manage 'Done', 'Missed' and 'Skipped' (legitimate) for real statistics." },
+                { name: "Frequency Control", desc: "Set habits for specific days (e.g., Mon, Wed, Fri) or daily." },
+                { name: "Quantifiable Goals", desc: "Track precise numbers: '2 liters of water', '10 pages read', '45 minutes workout'." },
+                { name: "Streak Freeze", desc: "'Skipped' mode freezes your streak without breaking it when you're sick or on vacation." }
             ]
         },
         {
             title: "Long-Term Vision",
-            description: "Perché la disciplina senza direzione è inutile.",
+            description: "Because discipline without direction is useless.",
             icon: Target,
             features: [
-                { name: "Macro Goals", desc: "Obiettivi Annuali, Trimestrali e Mensili collegati alle tue azioni quotidiane." },
-                { name: "Life View", desc: "La visualizzazione 'Memento Mori': tutta la tua vita in mesi, dal 2003 al 2088. Impattante." },
-                { name: "Yearly Trends", desc: "Analisi comparative degli anni passati. Scopri qual è stato il tuo anno più produttivo." },
-                { name: "Category Balance", desc: "Grafico radar per vedere se stai trascurando aree vitali (Salute, Lavoro, Relazioni)." }
+                { name: "Macro Goals", desc: "Yearly, Quarterly and Monthly goals connected to your daily actions." },
+                { name: "Life View", desc: "The 'Memento Mori' visualization: your entire life in months, from 2003 to 2088. Impactful." },
+                { name: "Yearly Trends", desc: "Comparative analysis of past years. Discover which was your most productive year." },
+                { name: "Category Balance", desc: "Radar chart to see if you're neglecting vital areas (Health, Work, Relationships)." }
             ]
         },
         {
             title: "Intelligence & AI",
-            description: "Il tuo secondo cervello, potenziato dall'AI locale.",
+            description: "Your second brain, powered by local AI.",
             icon: Brain,
             features: [
-                { name: "AI Neural Coach", desc: "Utilizza Local LLM (Ollama) per analizzare i tuoi dati e darti consigli settimanali su misura." },
-                { name: "Mood & Energy Matrix", desc: "Traccia Energia e Umore su un piano cartesiano. Scopri quando sei al picco della performance." },
-                { name: "Privacy First AI", desc: "L'AI gira sul TUO computer. Nessun dato viene inviato a server esterni o cloud AI." },
-                { name: "Correlations", desc: "Il sistema impara: 'Quando dormi male (Mood), salti spesso l'allenamento (Habit)'." }
+                { name: "AI Neural Coach", desc: "Uses Local LLM (Ollama) to analyze your data and give you customized weekly advice." },
+                { name: "Mood & Energy Matrix", desc: "Track Energy and Mood on a Cartesian plane. Discover when you're at peak performance." },
+                { name: "Privacy First AI", desc: "The AI runs on YOUR computer. No data is sent to external servers or cloud AI." },
+                { name: "Correlations", desc: "The system learns: 'When you sleep poorly (Mood), you often skip workouts (Habit)'." }
             ]
         },
         {
             title: "Utilities Suite",
-            description: "Tutti gli strumenti che ti servono, in un unico posto.",
+            description: "All the tools you need, in one place.",
             icon: Database,
             features: [
-                { name: "Reading Tracker", desc: "Calendario specifico per la lettura. Traccia pagine e consistenza giornaliera." },
-                { name: "Markdown Memos", desc: "Editor di testo integrato con supporto Markdown per note veloci e idee." },
-                { name: "Smart Deletion", desc: "Archiviazione intelligente (Soft Delete) per non perdere lo storico delle abitudini cancellate." },
-                { name: "Full Backup", desc: "Esporta tutti i tuoi dati in JSON con un click. Sei il proprietario delle tue informazioni." }
+                { name: "Reading Tracker", desc: "Specific calendar for reading. Track pages and daily consistency." },
+                { name: "Markdown Memos", desc: "Integrated text editor with Markdown support for quick notes and ideas." },
+                { name: "Smart Deletion", desc: "Intelligent archiving (Soft Delete) to not lose the history of deleted habits." },
+                { name: "Full Backup", desc: "Export all your data in JSON with one click. You own your information." }
             ]
         }
     ];
@@ -107,7 +107,7 @@ const FeaturesPage = () => {
                         transition={{ delay: 0.1 }}
                         className="text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto leading-relaxed"
                     >
-                        Un vero sistema operativo per la vita. Ogni modulo è progettato per lavorare in sinergia con gli altri.
+                        A true operating system for life. Every module is designed to work in synergy with the others.
                     </motion.p>
                 </div>
             </section>
@@ -164,8 +164,8 @@ const FeaturesPage = () => {
                     <Smartphone className="w-12 h-12 text-zinc-500 mx-auto mb-6" />
                     <h2 className="text-2xl font-bold mb-4">Mobile & Desktop Native</h2>
                     <p className="text-zinc-400 mb-8 max-w-2xl mx-auto">
-                        Tutte queste funzionalità sono accessibili al 100% da qualsiasi dispositivo.
-                        L'interfaccia si adatta fluidamente dal monitor 4K del tuo desktop allo schermo del tuo smartphone.
+                        All these features are 100% accessible from any device.
+                        The interface adapts fluidly from your desktop's 4K monitor to your smartphone screen.
                     </p>
                     <div className="flex justify-center gap-4 text-sm text-zinc-500">
                         <span className="flex items-center gap-2"><CheckCircle2 size={16} /> iOS Ready</span>
@@ -180,11 +180,11 @@ const FeaturesPage = () => {
             <footer className="py-12 bg-black text-center">
                 <div className="container mx-auto px-6">
                     <p className="text-zinc-500 text-sm mb-6">
-                        Pronto a prendere il controllo?
+                        Ready to take control?
                     </p>
                     <a href="https://github.com/simo-hue/mattioli.OS" target="_blank" rel="noreferrer">
                         <Button className="bg-white text-black hover:bg-zinc-200 rounded-full px-8 py-6 text-lg">
-                            Vai su GitHub
+                            Go to GitHub
                         </Button>
                     </a>
                 </div>

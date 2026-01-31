@@ -27,10 +27,10 @@ const LandingMobileNav = () => {
     }, [isOpen]);
 
     const menuItems = [
-        { path: "/features", label: "Funzionalità" },
-        { path: "/philosophy", label: "Filosofia" },
+        { path: "/features", label: "Features" },
+        { path: "/philosophy", label: "Philosophy" },
         { path: "/tech", label: "Tech" },
-        { path: "/creator", label: "Il Founder" },
+        { path: "/creator", label: "The Founder" },
         { path: "/faq", label: "FAQ" },
     ];
 
@@ -89,7 +89,7 @@ const LandingMobileNav = () => {
                                 >
                                     <Link to="/get-started">
                                         <Button className="w-full h-12 text-sm md:text-lg rounded-xl bg-white text-black hover:bg-zinc-200">
-                                            Guida
+                                            Guide
                                         </Button>
                                     </Link>
                                     <a href="https://github.com/simo-hue/mattioli.OS" target="_blank" rel="noreferrer">

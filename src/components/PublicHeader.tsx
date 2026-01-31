@@ -17,16 +17,16 @@ const PublicHeader = () => {
                     </span>
                 </div>
                 <div className="hidden md:flex items-center gap-8 text-sm text-zinc-400">
-                    <Link to="/features" className="hover:text-white transition-colors">Funzionalità</Link>
-                    <Link to="/philosophy" className="hover:text-white transition-colors">Filosofia</Link>
+                    <Link to="/features" className="hover:text-white transition-colors">Features</Link>
+                    <Link to="/philosophy" className="hover:text-white transition-colors">Philosophy</Link>
                     <Link to="/tech" className="hover:text-white transition-colors">Tech</Link>
-                    <Link to="/creator" className="hover:text-white transition-colors">Il Founder</Link>
+                    <Link to="/creator" className="hover:text-white transition-colors">The Founder</Link>
                     <Link to="/faq" className="hover:text-white transition-colors font-medium text-purple-400">FAQ</Link>
                 </div>
                 <div className="hidden md:flex items-center gap-4">
                     <Link to="/get-started">
                         <Button size="sm" className="rounded-full px-4 bg-white text-black hover:bg-zinc-200 transition-colors">
-                            Guida Installazione
+                            Installation Guide
                         </Button>
                     </Link>
                 </div>

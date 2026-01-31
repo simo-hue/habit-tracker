@@ -2,6 +2,25 @@
 
 ## 📅 Log Modifiche (Ultimi aggiornamenti)
 
+### [2026-01-31] Website Translation: Italian → English
+- **Scope**: Translated all public website pages from Italian to English (web app content excluded).
+- **Files Modified**:
+  - `index.html` - SEO meta descriptions, Open Graph tags, Twitter cards
+  - `src/pages/LandingPage.tsx` - Hero section, feature cards, footer
+  - `src/pages/FAQ.tsx` - All FAQ questions and answers (6 categories, 40+ Q&A)
+  - `src/pages/FeaturesPage.tsx` - Feature sections and descriptions
+  - `src/pages/PhilosophyPage.tsx` - Origin story and three pillars section
+  - `src/pages/TechPage.tsx` - Tech stack descriptions and deployment info
+  - `src/pages/CreatorPage.tsx` - Founder biography and philosophy
+  - `src/pages/GetStartedPage.tsx` - Installation guide steps
+  - `src/components/PublicHeader.tsx` - Navigation menu labels
+  - `src/components/LandingMobileNav.tsx` - Mobile navigation labels
+- **Key Changes**:
+  - HTML lang attribute changed from "it" to "en"
+  - All UI labels translated (Funzionalità→Features, Filosofia→Philosophy, Il Founder→The Founder, etc.)
+  - All descriptive content professionally translated maintaining original meaning
+- **Testing**: Build verified successfully (`npm run build`).
+
 ### [2026-01-31] Enhanced Category Distribution PieChart (Macro Goals)
 - **Layout Ridisegnato**:
   - Grafico Pie centrato in alto

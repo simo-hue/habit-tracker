@@ -16,72 +16,72 @@ const faqData = [
         category: "Philosophy & General",
         icon: Activity,
         questions: [
-            { q: "Cos'è Mattioli.OS?", a: "È un sistema operativo completo per la crescita personale. Non è solo un habit tracker, ma una suite integrata per gestire abitudini giornaliere, obiettivi a lungo termine e analisi delle performance." },
-            { q: "Perché 'OS' (Operating System)?", a: "Perché mira a sostituire l'infrastruttura frammentata che usiamo di solito (note sparse, app multiple, fogli excel) con un unico sistema centralizzato e coerente per gestire la propria vita." },
-            { q: "È veramente gratuito?", a: "Sì, al 100%. È un progetto Open Source rilasciato sotto licenza MIT. I tuoi dati sono tuoi, non c'è nessun abbonamento premium." },
-            { q: "In cosa differisce da Notion o Todoist?", a: "Mattioli.OS è 'opinionated'. Notion è flessibile ma richiede ore per il setup. Todoist è focalizzato sulle liste. Questo sistema è costruito specificamente per la disciplina e l'analisi quantitativa dei dati, pronto all'uso." },
-            { q: "Qual è la filosofia di base?", a: "Si basa su 'Atomic Habits' di James Clear: 'Non ci innalziamo al livello dei nostri obiettivi, scendiamo al livello dei nostri sistemi'. Il focus è sulla riduzione dell'attrito e sulla visualizzazione dei progressi." },
-            { q: "Devo creare un account?", a: "Sì, il sistema utilizza Supabase Auth per garantire che i tuoi dati siano sicuri, criptati e accessibili solo a te. L'account è gratuito." },
-            { q: "Chi è lo sviluppatore?", a: "Sono Simone Mattioli, uno sviluppatore appassionato di produttività e data visualization. Ho costruito questo tool inizialmente per me stesso." },
+            { q: "What is Mattioli.OS?", a: "It's a complete operating system for personal growth. It's not just a habit tracker, but an integrated suite for managing daily habits, long-term goals and performance analysis." },
+            { q: "Why 'OS' (Operating System)?", a: "Because it aims to replace the fragmented infrastructure we usually use (scattered notes, multiple apps, Excel sheets) with a single centralized and consistent system to manage your life." },
+            { q: "Is it really free?", a: "Yes, 100%. It's an Open Source project released under the MIT license. Your data is yours, there's no premium subscription." },
+            { q: "How is it different from Notion or Todoist?", a: "Mattioli.OS is 'opinionated'. Notion is flexible but requires hours for setup. Todoist is focused on lists. This system is built specifically for discipline and quantitative data analysis, ready to use." },
+            { q: "What is the core philosophy?", a: "It's based on 'Atomic Habits' by James Clear: 'We don't rise to the level of our goals, we fall to the level of our systems.' The focus is on reducing friction and visualizing progress." },
+            { q: "Do I need to create an account?", a: "Yes, the system uses Supabase Auth to ensure your data is secure, encrypted and accessible only to you. The account is free." },
+            { q: "Who is the developer?", a: "I'm Simone Mattioli, a developer passionate about productivity and data visualization. I initially built this tool for myself." },
         ]
     },
     {
         category: "Daily Protocol",
         icon: Activity,
         questions: [
-            { q: "Cos'è il 'Daily Protocol'?", a: "È la tua lista di abitudini giornaliere non negoziabili. Il cuore del sistema per costruire la consistenza." },
-            { q: "Come funziona la logica 'Tri-State'?", a: "Ogni abitudine può avere 3 stati: 'Done' (fatto, verde), 'Missed' (mancato, rosso), 'Skipped' (saltato legittimamente, grigio). Questo offre più sfumature rispetto al semplice sì/no." },
-            { q: "Qual è la differenza tra Missed e Skipped?", a: "'Missed' penalizza la tua streak e le statistiche (hai fallito). 'Skipped' è neutro (es. eri malato o in vacanza), non rompe la streak ma non contribuisce al punteggio." },
-            { q: "Come elimino un'abitudine?", a: "Se l'abitudine ha dei dati storici, viene 'archiviata' (Soft Delete) per non perdere le statistiche passate. Se non ha dati, viene eliminata definitivamente." },
-            { q: "Posso personalizzare i colori?", a: "Assolutamente. Ogni abitudine può avere un colore specifico per aiutarti a raggrupparle visivamente (es. Salute = Verde, Lavoro = Blu)." },
-            { q: "Cos'è una 'Streak'?", a: "È il numero di giorni consecutivi in cui hai completato un'abitudine senza 'Missed'. Gli 'Skipped' mantengono la streak congelata." },
-            { q: "Posso impostare abitudini solo per certi giorni?", a: "Sì, puoi definire la frequenza (es. Lun, Mer, Ven). Negli altri giorni l'abitudine non apparirà nella tua lista daily." },
-            { q: "Posso tracciare valori numerici?", a: "Sì, puoi abilitare il tracciamento quantitativo (es. '2 litri d'acqua', '10 pagine lette') oltre allo stato completato." },
+            { q: "What is the 'Daily Protocol'?", a: "It's your list of non-negotiable daily habits. The heart of the system for building consistency." },
+            { q: "How does the 'Tri-State' logic work?", a: "Each habit can have 3 states: 'Done' (completed, green), 'Missed' (failed, red), 'Skipped' (legitimately skipped, gray). This offers more nuance than simple yes/no." },
+            { q: "What's the difference between Missed and Skipped?", a: "'Missed' penalizes your streak and statistics (you failed). 'Skipped' is neutral (e.g., you were sick or on vacation), it doesn't break the streak but doesn't contribute to the score." },
+            { q: "How do I delete a habit?", a: "If the habit has historical data, it gets 'archived' (Soft Delete) to not lose past statistics. If it has no data, it gets permanently deleted." },
+            { q: "Can I customize the colors?", a: "Absolutely. Each habit can have a specific color to help you visually group them (e.g., Health = Green, Work = Blue)." },
+            { q: "What is a 'Streak'?", a: "It's the number of consecutive days you've completed a habit without 'Missed'. 'Skipped' keeps the streak frozen." },
+            { q: "Can I set habits for specific days only?", a: "Yes, you can define the frequency (e.g., Mon, Wed, Fri). On other days the habit won't appear in your daily list." },
+            { q: "Can I track numeric values?", a: "Yes, you can enable quantitative tracking (e.g., '2 liters of water', '10 pages read') in addition to completed status." },
         ]
     },
     {
         category: "Macro Goals & Vision",
         icon: Target,
         questions: [
-            { q: "Cosa sono i Macro Goals?", a: "Sono obiettivi a lungo termine strutturati gerarchicamente: Annuali, Trimestrali, Mensili e Settimanali." },
-            { q: "Come visualizzo i miei progressi a lungo termine?", a: "C'è una dashboard dedicata ('Mappa') con grafici radar, trend di completamento e analisi delle categorie per vedere se stai bilanciando bene la tua vita." },
-            { q: "Cos'è il calendario 'Memento Mori'?", a: "Una visualizzazione della tua vita in settimane (dalla nascita presunta alla morte statistica). Serve a creare urgenza e dare valore al tempo." },
-            { q: "Posso vedere lo storico degli anni passati?", a: "Sì, la dashboard 'All-Time' ti permette di navigare tra i dati di tutti gli anni in cui hai usato il sistema, con KPI aggregati." },
-            { q: "C'è un limite al numero di obiettivi?", a: "Tecnicamente no. Il sistema gestisce paginazione efficiente anche per migliaia di record, ma per la tua sanità mentale consigliamo di focalizzarti su poche priorità." },
+            { q: "What are Macro Goals?", a: "These are long-term goals structured hierarchically: Yearly, Quarterly, Monthly and Weekly." },
+            { q: "How do I visualize my long-term progress?", a: "There's a dedicated dashboard ('Map') with radar charts, completion trends and category analysis to see if you're balancing your life well." },
+            { q: "What is the 'Memento Mori' calendar?", a: "A visualization of your life in weeks (from presumed birth to statistical death). It serves to create urgency and give value to time." },
+            { q: "Can I see the history of past years?", a: "Yes, the 'All-Time' dashboard allows you to navigate through data from all years you've used the system, with aggregated KPIs." },
+            { q: "Is there a limit to the number of goals?", a: "Technically no. The system handles efficient pagination even for thousands of records, but for your sanity we recommend focusing on a few priorities." },
         ]
     },
     {
         category: "AI Coach & Privacy",
         icon: Brain,
         questions: [
-            { q: "Come funziona l'AI Coach?", a: "Analizza i tuoi dati (abitudini, mood, obiettivi) e genera report settimanali con consigli personalizzati. Funziona come un mental coach virtuale." },
-            { q: "I miei dati vengono inviati a OpenAI/Google?", a: "NO. Di default il sistema è progettato per usare 'Local LLM' (Ollama). I dati vengono processati localmente sul tuo machine. Privacy first." },
-            { q: "Cosa significa 'Local LLM'?", a: "Significa che il modello di intelligenza artificiale (es. Llama 3, Mistral) gira sul tuo computer, non su un server remoto. Nessun dato lascia la tua rete." },
-            { q: "Come configuro Ollama?", a: "Devi scaricare Ollama dal sito ufficiale, installare un modello (es. `ollama run llama3`) e assicurarti che il server sia attivo sulla porta 11434." },
-            { q: "Posso usare il sistema senza AI?", a: "Certamente. L'AI Coach è un modulo opzionale. Se non lo configuri o lo disabiliti nelle impostazioni, il resto dell'app funziona perfettamente." },
-            { q: "L'AI legge le mie note personali?", a: "Solo se glielo permetti esplicitamente per generare correlazioni tra il tuo stato d'animo e le tue performance." },
+            { q: "How does the AI Coach work?", a: "It analyzes your data (habits, mood, goals) and generates weekly reports with personalized advice. It works like a virtual mental coach." },
+            { q: "Is my data sent to OpenAI/Google?", a: "NO. By default the system is designed to use 'Local LLM' (Ollama). Data is processed locally on your machine. Privacy first." },
+            { q: "What does 'Local LLM' mean?", a: "It means the artificial intelligence model (e.g., Llama 3, Mistral) runs on your computer, not on a remote server. No data leaves your network." },
+            { q: "How do I configure Ollama?", a: "You need to download Ollama from the official website, install a model (e.g., `ollama run llama3`) and make sure the server is active on port 11434." },
+            { q: "Can I use the system without AI?", a: "Certainly. The AI Coach is an optional module. If you don't configure it or disable it in settings, the rest of the app works perfectly." },
+            { q: "Does the AI read my personal notes?", a: "Only if you explicitly allow it to generate correlations between your mood and your performance." },
         ]
     },
     {
         category: "Tech & Data",
         icon: Database,
         questions: [
-            { q: "Dove sono salvati i dati?", a: "Su Supabase, un database PostgreSQL open source e sicuro. Tu sei l'unico proprietario dei tuoi dati tramite autenticazione." },
-            { q: "Posso fare un backup?", a: "Sì. C'è una funzione 'Complete Backup' che scarica un archivio ZIP contenente tutti i tuoi dati in formato JSON, organizzati per tabelle." },
-            { q: "Posso importare/esportare i dati?", a: "Sì, il sistema di backup supporta sia l'export che l'import completo, utile per migrare o mettere al sicuro le informazioni." },
-            { q: "Esiste un'app mobile?", a: "Mattioli.OS è una PWA (Progressive Web App). Puoi installarla sulla home del tuo telefono (iOS/Android) e funziona quasi come un'app nativa." },
-            { q: "Qual è lo stack tecnologico?", a: "React 18, Vite, TypeScript, Tailwind CSS, shadcn/ui, Supabase, TanStack Query, Recharts." },
-            { q: "Posso self-hostare il database?", a: "Sì, essendo Supabase open source, puoi hostare la tua istanza Docker se hai le competenze tecniche per farlo." },
+            { q: "Where is the data saved?", a: "On Supabase, an open source and secure PostgreSQL database. You are the only owner of your data through authentication." },
+            { q: "Can I make a backup?", a: "Yes. There's a 'Complete Backup' function that downloads a ZIP archive containing all your data in JSON format, organized by tables." },
+            { q: "Can I import/export data?", a: "Yes, the backup system supports both complete export and import, useful for migrating or securing information." },
+            { q: "Is there a mobile app?", a: "Mattioli.OS is a PWA (Progressive Web App). You can install it on your phone's home screen (iOS/Android) and it works almost like a native app." },
+            { q: "What is the tech stack?", a: "React 18, Vite, TypeScript, Tailwind CSS, shadcn/ui, Supabase, TanStack Query, Recharts." },
+            { q: "Can I self-host the database?", a: "Yes, since Supabase is open source, you can host your own Docker instance if you have the technical skills to do so." },
         ]
     },
     {
         category: "Troubleshooting & Support",
         icon: Code2,
         questions: [
-            { q: "Ho trovato un bug, cosa faccio?", a: "Apri una issue su GitHub. Il progetto è attivamente mantenuto e i contributi della community sono benvenuti." },
-            { q: "Perché l'AI non risponde?", a: "Verifica che Ollama sia in esecuzione (`ollama serve`) e che il modello selezionato sia scaricato. Controlla anche che il browser non blocchi le chiamate a localhost (CORS)." },
-            { q: "Il sito sembra lento con molti dati?", a: "Abbiamo implementato la paginazione ricorsiva e il virtual scrolling. Se noti rallentamenti sopra i 100k record, faccelo sapere." },
-            { q: "Come aggiorno alla nuova versione?", a: "Se usi la versione web, aggiorna semplicemente la pagina. Se hai clonato la repo, fai `git pull` e `npm run build`." },
+            { q: "I found a bug, what do I do?", a: "Open an issue on GitHub. The project is actively maintained and community contributions are welcome." },
+            { q: "Why isn't the AI responding?", a: "Verify that Ollama is running (`ollama serve`) and that the selected model is downloaded. Also check that the browser isn't blocking calls to localhost (CORS)." },
+            { q: "The site seems slow with lots of data?", a: "We've implemented recursive pagination and virtual scrolling. If you notice slowdowns above 100k records, let us know." },
+            { q: "How do I update to the new version?", a: "If you use the web version, simply refresh the page. If you cloned the repo, do `git pull` and `npm run build`." },
         ]
     }
 ];
@@ -113,17 +113,17 @@ const FAQPage = () => {
             <section className="pt-32 pb-12 px-6 bg-zinc-900/20">
                 <div className="container mx-auto max-w-4xl text-center">
                     <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-br from-white to-zinc-500 bg-clip-text text-transparent">
-                        Domande Frequenti
+                        Frequently Asked Questions
                     </h1>
                     <p className="text-zinc-400 mb-8 max-w-2xl mx-auto">
-                        Tutto quello che devi sapere su Mattioli.OS. Dalla filosofia di base ai dettagli tecnici più profondi.
+                        Everything you need to know about Mattioli.OS. From the core philosophy to the deepest technical details.
                     </p>
 
                     <div className="relative max-w-xl mx-auto">
                         <Search className="absolute left-4 top-3.5 h-5 w-5 text-zinc-500" />
                         <Input
                             type="text"
-                            placeholder="Cerca una domanda..."
+                            placeholder="Search for a question..."
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                             className="pl-12 h-12 bg-white/5 border-white/10 rounded-full focus:ring-purple-500/50 text-lg"
@@ -143,7 +143,7 @@ const FAQPage = () => {
                             onClick={() => setActiveCategory("All")}
                             className="rounded-full"
                         >
-                            Tutte
+                            All
                         </Button>
                         {faqData.map((cat, i) => (
                             <Button
@@ -211,8 +211,8 @@ const FAQPage = () => {
 
                         {filteredFAQs.length === 0 && (
                             <div className="text-center py-20 text-zinc-500">
-                                <p>Nessuna domanda trovata per "{searchQuery}"</p>
-                                <Button variant="link" onClick={() => setSearchQuery("")} className="text-purple-400">Cancella ricerca</Button>
+                                <p>No questions found for "{searchQuery}"</p>
+                                <Button variant="link" onClick={() => setSearchQuery("")} className="text-purple-400">Clear search</Button>
                             </div>
                         )}
                     </div>
@@ -221,13 +221,13 @@ const FAQPage = () => {
 
             {/* Footer Call to Action */}
             <section className="py-20 border-t border-white/10 text-center">
-                <h3 className="text-2xl font-bold mb-4">Hai altre domande?</h3>
+                <h3 className="text-2xl font-bold mb-4">Have more questions?</h3>
                 <p className="text-zinc-400 mb-8">
-                    Unisciti alla community o contattaci direttamente su GitHub.
+                    Join the community or contact us directly on GitHub.
                 </p>
                 <a href="https://github.com/simo-hue/mattioli.OS" target="_blank" rel="noreferrer">
                     <Button className="bg-white text-black hover:bg-zinc-200 rounded-full px-8 py-6 text-lg">
-                        Vai su GitHub
+                        Go to GitHub
                     </Button>
                 </a>
             </section>

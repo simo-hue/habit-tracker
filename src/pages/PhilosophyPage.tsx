@@ -62,16 +62,16 @@ const PhilosophyPage = () => {
                         className="text-lg md:text-xl text-zinc-300 max-w-3xl mx-auto leading-relaxed space-y-6 text-left"
                     >
                         <p>
-                            Per anni ho cercato un software che fosse completo, gratuito e capace di gestire la mia produttività come volevo io.
-                            Ho iniziato utilizzando i <strong>Promemoria di Apple</strong>, immediati ma limitati.
-                            Poi mi sono evoluto, studiando e costruendo interi sistemi complessi su <strong>Notion</strong>.
+                            For years I searched for software that was complete, free and capable of managing my productivity the way I wanted.
+                            I started using <strong>Apple Reminders</strong>, immediate but limited.
+                            Then I evolved, studying and building entire complex systems on <strong>Notion</strong>.
                         </p>
                         <p>
-                            Ma mancava sempre qualcosa. Nessuno strumento aveva quella fluidità unita alla visione d'insieme che cercavo.
-                            Nulla che assomigliasse a questo tool, che è veramente una cosa unica nel suo genere.
+                            But something was always missing. No tool had that fluidity combined with the overview I was looking for.
+                            Nothing that resembled this tool, which is truly one of a kind.
                         </p>
                         <p className="font-semibold text-white">
-                            Non l'ho trovato. E allora l'ho creato io.
+                            I couldn't find it. So I built it myself.
                         </p>
                     </motion.div>
                 </div>
@@ -81,8 +81,8 @@ const PhilosophyPage = () => {
             <section className="py-20 px-6 bg-zinc-900/20 border-y border-white/5">
                 <div className="container mx-auto max-w-6xl">
                     <div className="text-center mb-16">
-                        <h2 className="text-3xl font-bold mb-4">I Tre Pilastri</h2>
-                        <p className="text-zinc-400">La metodologia su cui si fonda Mattioli.OS</p>
+                        <h2 className="text-3xl font-bold mb-4">The Three Pillars</h2>
+                        <p className="text-zinc-400">The methodology on which Mattioli.OS is founded</p>
                     </div>
 
                     <motion.div
@@ -99,8 +99,8 @@ const PhilosophyPage = () => {
                             </div>
                             <h3 className="text-xl font-bold mb-3">Micro & Macro Alignment</h3>
                             <p className="text-zinc-400 leading-relaxed">
-                                Le abitudini giornaliere (Micro) non hanno senso senza una visione (Macro).
-                                Il sistema collega ogni piccola azione quotidiana ai tuoi obiettivi annuali e trimestrali.
+                                Daily habits (Micro) make no sense without a vision (Macro).
+                                The system connects every small daily action to your yearly and quarterly goals.
                             </p>
                         </motion.div>
 
@@ -111,8 +111,8 @@ const PhilosophyPage = () => {
                             </div>
                             <h3 className="text-xl font-bold mb-3">Data-Driven Growth</h3>
                             <p className="text-zinc-400 leading-relaxed">
-                                "Non puoi migliorare ciò che non misuri."
-                                Oltre al semplice "fatto/non fatto", analizziamo le correlazioni tra i tuoi goal e il tuo mood per capire cosa funziona davvero.
+                                "You can't improve what you don't measure."
+                                Beyond simple "done/not done", we analyze correlations between your goals and your mood to understand what really works.
                             </p>
                         </motion.div>
 
@@ -123,8 +123,8 @@ const PhilosophyPage = () => {
                             </div>
                             <h3 className="text-xl font-bold mb-3">Extreme Ownership</h3>
                             <p className="text-zinc-400 leading-relaxed">
-                                Nessun dato venduto. Nessun algoritmo nascosto.
-                                Il software è open source perché la tua produttività e i tuoi dati sensibili devono appartenere solo a te.
+                                No data sold. No hidden algorithms.
+                                The software is open source because your productivity and sensitive data should belong only to you.
                             </p>
                         </motion.div>
                     </motion.div>
@@ -136,9 +136,9 @@ const PhilosophyPage = () => {
                 <div className="container mx-auto max-w-4xl text-center">
                     <Target className="w-16 h-16 text-amber-500/20 mx-auto mb-8" />
                     <blockquote className="text-3xl md:text-4xl font-serif italic text-zinc-300 mb-8 leading-relaxed">
-                        "La vera libertà non è l'assenza di impegni, ma la capacità di scegliere le proprie catene. Io ho scelto la disciplina."
+                        "True freedom is not the absence of commitments, but the ability to choose your own chains. I chose discipline."
                     </blockquote>
-                    <cite className="text-amber-500 not-italic font-medium">— Manifesto Mattioli.OS</cite>
+                    <cite className="text-amber-500 not-italic font-medium">— Mattioli.OS Manifesto</cite>
                 </div>
             </section>
 
@@ -146,16 +146,16 @@ const PhilosophyPage = () => {
             <footer className="py-12 border-t border-white/10 bg-zinc-900/20 text-center">
                 <div className="container mx-auto px-6">
                     <p className="text-zinc-500 text-sm mb-6">
-                        Vuoi vedere il codice che muove tutto questo?
+                        Want to see the code that drives all this?
                     </p>
                     <Link to="/tech">
                         <Button variant="outline" className="rounded-full border-white/10 hover:bg-white/5 text-zinc-300">
-                            Esplora la Tecnologia
+                            Explore the Technology
                         </Button>
                     </Link>
                     <a href="https://github.com/simo-hue/mattioli.OS" target="_blank" rel="noreferrer">
                         <Button className="bg-white text-black hover:bg-zinc-200 rounded-full px-8 py-4 text-lg">
-                            Vai su GitHub
+                            Go to GitHub
                         </Button>
                     </a>
                 </div>

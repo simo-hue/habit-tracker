@@ -37,7 +37,7 @@ const CreatorPage = () => {
                             Simone <span className="text-zinc-500">Mattioli</span>
                         </h1>
                         <p className="text-lg md:text-2xl text-zinc-400 max-w-2xl mx-auto font-light">
-                            Dal codice alla cima. Un viaggio tra byte e natura selvaggia.
+                            From code to the summit. A journey between bytes and wild nature.
                         </p>
                     </motion.div>
 
@@ -58,10 +58,10 @@ const CreatorPage = () => {
                                 Tech & AI <span className="text-xs px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300">Developer</span>
                             </h2>
                             <p className="text-zinc-400 leading-relaxed mb-6">
-                                Laureando in Informatica all'Università di Verona, appassionato di AI.
-                                Sono di base una persona molto curiosa, ma soprattutto DISCIPLINATA che vuole raggiungere degli obiettivi grandi.
+                                Computer Science student at the University of Verona, passionate about AI.
+                                I'm fundamentally a very curious person, but above all DISCIPLINED, who wants to achieve big goals.
                                 <br /><br />
-                                Mattioli.OS nasce da qui: dalla necessità di struttura in un mondo caotico.
+                                Mattioli.OS was born from here: from the need for structure in a chaotic world.
                             </p>
                         </motion.div>
 
@@ -81,9 +81,9 @@ const CreatorPage = () => {
                                 Mountain <span className="text-xs px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300">Explorer</span>
                             </h2>
                             <p className="text-zinc-400 leading-relaxed mb-6">
-                                Quando chiudo l'IDE, apro la mappa della Val di Rabbi. Inseguo cervi col binocolo e scalo vette al tramonto.
+                                When I close the IDE, I open the map of Val di Rabbi. I chase deer with binoculars and climb peaks at sunset.
                                 <br /><br />
-                                Ho imparato più sulla resilienza gestendo imprevisti in montagna che fixando bug. La natura è il mio vero reset.
+                                I've learned more about resilience managing setbacks in the mountains than fixing bugs. Nature is my true reset.
                             </p>
                         </motion.div>
                     </div>
@@ -96,10 +96,10 @@ const CreatorPage = () => {
                     <Heart className="w-12 h-12 text-rose-500 mx-auto mb-6" />
                     <h3 className="text-3xl font-bold mb-6">"Vision without action is just a dream."</h3>
                     <p className="text-zinc-400 text-lg leading-relaxed mb-8">
-                        Ho fatto volontariato nelle favelas del Brasile, un'esperienza che mi ha insegnato l'importanza dell'empatia e del "restituire".
-                        Credo nell'Open Source come forma di condivisione di conoscenza.
+                        I volunteered in the favelas of Brazil, an experience that taught me the importance of empathy and "giving back".
+                        I believe in Open Source as a form of knowledge sharing.
                         <br /><br />
-                        Che sia scrivere un algoritmo o tracciare un sentiero, cerco sempre di creare qualcosa che abbia un impatto reale, anche piccolo.
+                        Whether it's writing an algorithm or tracing a trail, I always try to create something that has a real impact, even if small.
                     </p>
                 </div>
             </section>
